@@ -4,6 +4,6 @@
 | Name             | Number    | E-Mail              |
 | ---------------- | --------- | ------------------  |
 | Fernando Rego    | 201905951 | up201905951@fe.up.pt|
-| Jane Doe         | 201907021 | up201907021@fe.up.pt| 
+| Tiago Rodrigues  | 201907021 | up201907021@fe.up.pt| 
 
 ----
