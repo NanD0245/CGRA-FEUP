@@ -20,10 +20,10 @@ export class MyInterface extends CGFinterface {
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
 
-        //Checkbox element for Diamond Selection
-        this.gui.add(this.scene, 'displayDiamond').name('DisplayDiamond');
+        //Checkbox element in GUI
+        this.gui.add(this.scene, 'displayDiamond').name('Display Diamond');
 
-        //Checkbox element for Triangle Selection
+        //Checkbox element in GUI
         this.gui.add(this.scene, 'displayTriangle').name('Display Triangle');
 
         //Slider element in GUI

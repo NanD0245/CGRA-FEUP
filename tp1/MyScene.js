@@ -30,9 +30,9 @@ export class MyScene extends CGFscene {
     this.triangle = new MyTriangle(this);
 
     //Objects connected to MyInterface
+    this.displayTriangle = true;
     this.displayDiamond = true;
     this.displayAxis = true;
-    this.displayTriangle = true;
     this.scaleFactor = 1;
   }
   initLights() {
@@ -69,8 +69,6 @@ export class MyScene extends CGFscene {
 
     // Draw axis
     if (this.displayAxis) this.axis.display();
-    if (this.displayDiamond) this.diamond.display();
-    if (this.displayTriangle) this.triangle.display();
 
     this.setDefaultAppearance();
 
@@ -97,6 +95,9 @@ export class MyScene extends CGFscene {
 
     // ---- BEGIN Primitive drawing section
 
+    if(this.displayDiamond) this.diamond.display();
+    if(this.displayTriangle) this.triangle.display();
+    
     // ---- END Primitive drawing section
   }
 }
