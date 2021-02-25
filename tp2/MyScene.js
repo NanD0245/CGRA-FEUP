@@ -35,6 +35,7 @@ export class MyScene extends CGFscene {
 		this.displayTangram = true;
 		this.displayAxis = true;
 		this.displayUnitCube = true;
+		this.displayUnitCubeQuad = true;
 		this.scaleFactor = 1;
 
 	}
@@ -99,14 +100,24 @@ export class MyScene extends CGFscene {
 
 
 		this.pushMatrix();
+		this.translate(0,0,2);
+		this.rotate(-Math.PI/12,0,1,0);
+		this.translate(0,0,2);
+		this.rotate(-Math.PI/2,1,0,0);
+
+		this.pushMatrix();
+		this.translate(0,0,-1);
+		if (this.displayUnitCubeQuad) this.myUnitCubeQuad.display();
 		this.translate(-0.5,-0.5,-0.5);
 		if (this.displayUnitCube) this.myUnitCube.display();
 		this.popMatrix();
 
+		
+		this.pushMatrix()
 		if(this.displayTangram) this.tangram.display();
-		
-		this.myUnitCubeQuad.display();
-		
+		this.popMatrix();
+
+		this.popMatrix();
 		// ---- END Primitive drawing section
 	}
 }
