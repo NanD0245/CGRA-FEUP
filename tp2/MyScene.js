@@ -4,6 +4,7 @@ import { MyTriangle } from "./MyTriangle.js";
 import {MyTriangleSmall} from "./MyTriangleSmall.js"
 import {MyTriangleBig} from "./MyTriangleBig.js"
 import { MyParallelogram } from "./MyParallelogram.js";
+import {MyUnitCube} from "./MyUnitCube.js"
 
 /**
  * MyScene
@@ -36,6 +37,7 @@ export class MyScene extends CGFscene {
 		this.redTriangleSmall = new MyTriangleSmall(this);
 		this.blueTriangleBig = new MyTriangleBig(this);
 		this.orangeTriangleBig = new MyTriangleBig(this);
+		this.myUnitCube = new MyUnitCube(this);
 
 		//Objects connected to MyInterface
 		this.displayTriangle = true;
@@ -46,6 +48,7 @@ export class MyScene extends CGFscene {
 		this.displayDiamond = true;
 		this.displayAxis = true;
 		this.displayParallelogram = true;
+		this.displayUnitCube = true;
 		this.scaleFactor = 1;
 
 	}
@@ -105,7 +108,7 @@ export class MyScene extends CGFscene {
 			1.0,
 		];
 
-		this.multMatrix(sca);
+		/*this.multMatrix(sca);
 
 		var angle = (15*Math.PI)/180;
 
@@ -128,10 +131,10 @@ export class MyScene extends CGFscene {
 			-Math.sin(angle), Math.cos(angle), 0, 0,
 			0,           0,          1, 0,
 			0,           0,          0, 1
-		];
+		];*/
 
 		// ---- BEGIN Primitive drawing section
-		this.pushMatrix();
+		/*this.pushMatrix();
 		this.setDiffuse(0,1,0,1);
 		this.multMatrix(diamondTranslation2Matrix);
 		this.multMatrix(diamondRotationMatrix);
@@ -179,6 +182,11 @@ export class MyScene extends CGFscene {
 		this.translate(-1.8, -1.8, 0);
 		this.rotate(Math.PI/4, 0, 0, 1);
 		if (this.displayRedTriangleSmall) this.redTriangleSmall.display();
+		this.popMatrix();*/
+
+		this.pushMatrix();
+		this.translate(-0.5,-0.5,-0.5);
+		if (this.displayUnitCube) this.myUnitCube.display();
 		this.popMatrix();
 
 		// ---- END Primitive drawing section
