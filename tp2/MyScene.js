@@ -32,13 +32,17 @@ export class MyScene extends CGFscene {
 		this.diamond = new MyDiamond(this);
 		this.triangle = new MyTriangle(this);
 		this.parallelogram = new MyParallelogram(this);
-		this.triangleSmall = new MyTriangleSmall(this);
-		this.triangleBig = new MyTriangleBig(this);
+		this.purpleTriangleSmall = new MyTriangleSmall(this);
+		this.redTriangleSmall = new MyTriangleSmall(this);
+		this.blueTriangleBig = new MyTriangleBig(this);
+		this.orangeTriangleBig = new MyTriangleBig(this);
 
 		//Objects connected to MyInterface
 		this.displayTriangle = true;
-		this.displayTriangleSmall = true;
-		this.displayTriangleBig = true;
+		this.displayPurpleTriangleSmall = true;
+		this.displayRedTriangleSmall = true;
+		this.displayBlueTriangleBig = true;
+		this.displayOrangeTriangleBig = true;
 		this.displayDiamond = true;
 		this.displayAxis = true;
 		this.displayParallelogram = true;
@@ -103,15 +107,16 @@ export class MyScene extends CGFscene {
 
 		this.multMatrix(sca);
 
-		var translationMatrix = [
-			1,0,0,0,
-			0,1,0,0,
-			0,0,1,0,
-			0,3,0,1
+		var angle = (15*Math.PI)/180;
+
+		var diamondTranslationMatrix = [
+				  1,			0,0,0,
+				  0,		    1,0,0,
+				  0,		    0,1,0,
+			-Math.sin(angle),	3,0,1
 		];
 
-		var angle = (15*Math.PI)/180;
-		var rotationMatrix = [
+		var diamondRotationMatrix = [
 			Math.cos(angle),  Math.sin(angle), 0, 0,
 			-Math.sin(angle), Math.cos(angle), 0, 0,
 			0,           0,          1, 0,
@@ -121,9 +126,15 @@ export class MyScene extends CGFscene {
 		// ---- BEGIN Primitive drawing section
 		this.pushMatrix();
 		this.setDiffuse(0,1,0,1);
-		this.multMatrix(translationMatrix);
-		this.multMatrix(rotationMatrix);
-		if(this.displayDiamond) this.diamond.display();
+		this.multMatrix(diamondTranslationMatrix);
+		this.multMatrix(diamondRotationMatrix);
+		if (this.displayDiamond) this.diamond.display();
+		this.popMatrix();
+		
+		this.pushMatrix();
+		this.setDiffuse(1, 0.753, 0.796, 1);
+		this.translate(0, 3 - Math.cos(angle), 0);
+		if (this.displayTriangle) this.triangle.display();
 		this.popMatrix();
 
 		this.pushMatrix();
@@ -136,11 +147,30 @@ export class MyScene extends CGFscene {
 		this.pushMatrix();
 		this.translate(-Math.sqrt(2),-2.5*Math.sqrt(2),0);
 		this.rotate(Math.PI/4,0,0,1);
-		if (this.displayTriangleSmall) this.triangleSmall.display();
+		if (this.displayPurpleTriangleSmall) this.purpleTriangleSmall.display();
 		this.popMatrix();
 
-		/*if(this.displayTriangle) this.triangle.display();
-		if (this.displayParallelogram) this.parallelogram.display();
+		this.pushMatrix();
+		this.setDiffuse(0.012, 0.662, 0.956, 1);
+		this.rotate(Math.PI, 0, 0, 1);
+		this.translate(0, -2, 0);
+		if (this.displayBlueTriangleBig) this.blueTriangleBig.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+		this.setDiffuse(1, 0.514, 0);
+		this.rotate(-3*Math.PI/4, 0, 0, 1);
+		if (this.displayOrangeTriangleBig) this.orangeTriangleBig.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+		this.setDiffuse(1, 0, 0, 1);
+		this.translate(-1.8, -1.8, 0);
+		this.rotate(Math.PI/4, 0, 0, 1);
+		if (this.displayRedTriangleSmall) this.redTriangleSmall.display();
+		this.popMatrix();
+		
+		/*if (this.displayParallelogram) this.parallelogram.display();
 		if(this.displayTriangleSmall) this.triangleSmall.display();
 		if(this.displayTriangleBig) this.triangleBig.display();*/
 

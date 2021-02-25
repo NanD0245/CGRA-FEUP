@@ -8,9 +8,9 @@ export class MyTriangle extends CGFobject {
 
     initBuffers(){
         this.vertices = [
-            -1, 1, 0,
-            -1, -1, 0,
-            1, -1, 0
+            0, 0, 0,
+            2, 0, 0,
+            2, 2, 0
         ];
         
         this.indices = [
