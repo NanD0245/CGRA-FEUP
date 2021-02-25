@@ -109,12 +109,19 @@ export class MyScene extends CGFscene {
 
 		var angle = (15*Math.PI)/180;
 
-		var diamondTranslationMatrix = [
-				  1,			0,0,0,
-				  0,		    1,0,0,
-				  0,		    0,1,0,
-			-Math.sin(angle),	3,0,1
+		var diamondTranslation1Matrix = [
+			1,0,0,0,
+			0,1,0,0,
+			0,0,1,0,
+			0,1,0,1
 		];
+
+		var diamondTranslation2Matrix = [
+			1,0,0,0,
+			0,1,0,0,
+			0,0,1,0,
+	  		0,2,0,1
+  		];
 
 		var diamondRotationMatrix = [
 			Math.cos(angle),  Math.sin(angle), 0, 0,
@@ -126,8 +133,9 @@ export class MyScene extends CGFscene {
 		// ---- BEGIN Primitive drawing section
 		this.pushMatrix();
 		this.setDiffuse(0,1,0,1);
-		this.multMatrix(diamondTranslationMatrix);
+		this.multMatrix(diamondTranslation2Matrix);
 		this.multMatrix(diamondRotationMatrix);
+		this.multMatrix(diamondTranslation1Matrix)
 		if (this.displayDiamond) this.diamond.display();
 		this.popMatrix();
 		
@@ -138,6 +146,7 @@ export class MyScene extends CGFscene {
 		this.popMatrix();
 
 		this.pushMatrix();
+		this.setDiffuse(1,1,0,1);
 		this.translate(-Math.sqrt(2),-2*Math.sqrt(2),0);
 		this.rotate(Math.PI/4,0,0,1);
 		this.rotate(Math.PI,1,0,0);
@@ -145,6 +154,7 @@ export class MyScene extends CGFscene {
 		this.popMatrix();
 
 		this.pushMatrix();
+		this.setDiffuse(1,0,1,1);
 		this.translate(-Math.sqrt(2),-2.5*Math.sqrt(2),0);
 		this.rotate(Math.PI/4,0,0,1);
 		if (this.displayPurpleTriangleSmall) this.purpleTriangleSmall.display();
@@ -169,10 +179,6 @@ export class MyScene extends CGFscene {
 		this.rotate(Math.PI/4, 0, 0, 1);
 		if (this.displayRedTriangleSmall) this.redTriangleSmall.display();
 		this.popMatrix();
-		
-		/*if (this.displayParallelogram) this.parallelogram.display();
-		if(this.displayTriangleSmall) this.triangleSmall.display();
-		if(this.displayTriangleBig) this.triangleBig.display();*/
 
 		// ---- END Primitive drawing section
 	}
