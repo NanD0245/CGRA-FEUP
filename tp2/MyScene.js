@@ -126,6 +126,19 @@ export class MyScene extends CGFscene {
 		if(this.displayDiamond) this.diamond.display();
 		this.popMatrix();
 
+		this.pushMatrix();
+		this.translate(-Math.sqrt(2),-2*Math.sqrt(2),0);
+		this.rotate(Math.PI/4,0,0,1);
+		this.rotate(Math.PI,1,0,0);
+		if (this.displayParallelogram) this.parallelogram.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+		this.translate(-Math.sqrt(2),-2.5*Math.sqrt(2),0);
+		this.rotate(Math.PI/4,0,0,1);
+		if (this.displayTriangleSmall) this.triangleSmall.display();
+		this.popMatrix();
+
 		/*if(this.displayTriangle) this.triangle.display();
 		if (this.displayParallelogram) this.parallelogram.display();
 		if(this.displayTriangleSmall) this.triangleSmall.display();
