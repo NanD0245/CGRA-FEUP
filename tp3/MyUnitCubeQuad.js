@@ -49,9 +49,9 @@ export class MyUnitCubeQuad extends CGFobject {
     }
 
     enableNormalViz() {
-        if (this.scene.displayNormals)
-            this.face.enableNormalViz();
-        else
-            this.face.disableNormalViz();
+        this.face.enableNormalViz();
+    }
+    disableNormalViz() {
+        this.face.disableNormalViz();
     }
 }
