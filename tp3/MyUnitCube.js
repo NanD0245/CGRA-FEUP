@@ -7,7 +7,7 @@ export class MyUnitCube extends CGFobject {
     }
 
     initBuffers() { // temos algo mal -> ver depois
-        this.vertices = [
+        /*this.vertices = [
         -0.5, 0.5,-0.5, //0.1   0
         -0.5, 0.5,-0.5, //0.2   1
         -0.5, 0.5,-0.5, //0.3   2
@@ -86,8 +86,8 @@ export class MyUnitCube extends CGFobject {
 
         this.primitiveType = this.scene.gl.TRIANGLES;
 
-        this.initGLBuffers();
-        /*this.vertices = [
+        this.initGLBuffers();*/
+        this.vertices = [
 		    0.5, 0.5, 0.5,	//0
 			-0.5, 0.5, 0.5,	//1
 			-0.5, -0.5, 0.5,	//2
@@ -169,6 +169,6 @@ export class MyUnitCube extends CGFobject {
 
         this.primitiveType = this.scene.gl.TRIANGLES;
 
-		this.initGLBuffers();*/
+		this.initGLBuffers();
     }
 }
