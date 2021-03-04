@@ -13,6 +13,12 @@ export class MyTriangle extends CGFobject {
             1, -1, 0
         ];
         
+        this.normals = [
+            0, 0, 1,
+            0, 0, 1,
+            0, 0, 1
+        ];
+
         this.indices = [
             0, 1, 2
         ];
