@@ -33,7 +33,6 @@ export class MyScene extends CGFscene {
         this.plane = new MyPlane(this, 5);
         this.cone = new MyCone(this, 3, 1);
         this.pyramid = new MyPyramid(this, 3, 1);
-        //this.quad = new MyQuad(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.tangram = new MyTangram(this);
         this.unitCube = new MyUnitCube(this);
@@ -184,6 +183,7 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         this.materials[this.selectedMaterial].apply();
+
 
         this.pushMatrix();
         this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
