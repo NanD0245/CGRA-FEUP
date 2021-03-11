@@ -1,6 +1,7 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture } from "../lib/CGF.js";
 import { MyQuad } from "./MyQuad.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js"
+import { MyTangram } from "./MyTangram.js";
 
 /**
  * MyScene
@@ -29,6 +30,7 @@ export class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.quad = new MyQuad(this);
         
+        this.tangram = new MyTangram(this);
 
         //------ Applied Material
         this.quadMaterial = new CGFappearance(this);
@@ -52,8 +54,9 @@ export class MyScene extends CGFscene {
         this.cubeQuad = new MyUnitCubeQuad(this,this.texture6,this.texture5,this.texture5,this.texture5,this.texture5,this.texture4);
 
         //-------Objects connected to MyInterface
-        this.displayCubeQuad = true;
+        this.displayCubeQuad = false;
         this.displayQuad = false;
+        this.displayTangram = false;
         this.displayAxis = true;
         this.scaleFactor = 5;
         this.selectedTexture = -1;        
@@ -130,14 +133,18 @@ export class MyScene extends CGFscene {
 
         this.quadMaterial.apply();
 
+        if (this.displayTangram)
+            this.tangram.display();
+
+        this.quadMaterial.apply();
+
         // Default texture filtering in WebCGF is LINEAR. 
         // Uncomment next line for NEAREST when magnifying, or 
         // add a checkbox in the GUI to alternate in real time
         
-        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+        //this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         if (this.displayQuad)
             this.quad.display();
-
         // ---- END Primitive drawing section
     }
 }
