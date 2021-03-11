@@ -1,5 +1,6 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture } from "../lib/CGF.js";
 import { MyQuad } from "./MyQuad.js";
+import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js"
 
 /**
  * MyScene
@@ -27,6 +28,7 @@ export class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.quad = new MyQuad(this);
+        
 
         //------ Applied Material
         this.quadMaterial = new CGFappearance(this);
@@ -42,9 +44,16 @@ export class MyScene extends CGFscene {
         this.texture1 = new CGFtexture(this, 'images/board.jpg');
         this.texture2 = new CGFtexture(this, 'images/floor.png');
         this.texture3 = new CGFtexture(this, 'images/window.jpg');
+        this.texture4 = new CGFtexture(this, 'images/mineBottom.png');
+        this.texture5 = new CGFtexture(this, 'images/mineSide.png');
+        this.texture6 = new CGFtexture(this, 'images/mineTop.png');
         //-------
 
+        this.cubeQuad = new MyUnitCubeQuad(this,this.texture6,this.texture5,this.texture5,this.texture5,this.texture5,this.texture4);
+
         //-------Objects connected to MyInterface
+        this.displayCubeQuad = true;
+        this.displayQuad = false;
         this.displayAxis = true;
         this.scaleFactor = 5;
         this.selectedTexture = -1;        
@@ -91,7 +100,7 @@ export class MyScene extends CGFscene {
 
     //Function that updates texture coordinates in MyQuad
     updateTexCoords() {
-        this.quad.updateTexCoords(this.texCoords);
+        this.cubeQuad.updateTexCoords(this.texCoords);
     }
 
     display() {
@@ -116,6 +125,9 @@ export class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
+        if (this.displayCubeQuad)
+            this.cubeQuad.display();
+
         this.quadMaterial.apply();
 
         // Default texture filtering in WebCGF is LINEAR. 
@@ -123,8 +135,8 @@ export class MyScene extends CGFscene {
         // add a checkbox in the GUI to alternate in real time
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-
-        this.quad.display();
+        if (this.displayQuad)
+            this.quad.display();
 
         // ---- END Primitive drawing section
     }

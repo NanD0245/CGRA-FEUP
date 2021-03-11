@@ -86,7 +86,7 @@ export class MyTangram extends CGFobject {
 		];
 
         this.scene.pushMatrix();
-		this.scene.setDiffuse(1, 0.753, 0.796, 1);
+		//this.scene.setDiffuse(1, 0.753, 0.796, 1);
 		this.scene.translate(1, 3, 0);
 		this.scene.rotate(Math.PI/2, 0, 0, 1);
 		this.pinkMaterial.apply();
