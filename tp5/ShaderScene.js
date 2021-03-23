@@ -76,9 +76,8 @@ export class ShaderScene extends CGFscene {
 		this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
 		this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
-
 		this.waterTexture = new CGFtexture(this, "textures/waterTex.jpg");
-
+		this.waterMap = new CGFtexture(this, "textures/waterMap.jpg");
 		// shaders initialization
 
 		this.testShaders = [
@@ -94,6 +93,7 @@ export class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/twocolor.vert", "shaders/twocolor.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag"),
 			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
+			
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
@@ -101,8 +101,8 @@ export class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
-		this.testShaders[11].setUniformsValues({ uSampler3: 2}); //pass to sampler 3 the water texture bound
-																 //to number 2
+		this.testShaders[11].setUniformsValues({ uSampler3: 2, uSampler2: 3}); //pass to sampler 3 the water texture bound
+																 			   //to number 2
 		// Shaders interface variables
 
 		this.shadersList = {
@@ -235,6 +235,7 @@ export class ShaderScene extends CGFscene {
 		// bind additional texture to texture unit 1
 		this.texture2.bind(1);
 		this.waterTexture.bind(2); //bind to number 2 the water texture
+		this.waterMap.bind(3);
 
 		if (this.selectedObject==0) {
 			// teapot (scaled and rotated to conform to our axis)
