@@ -77,6 +77,8 @@ export class ShaderScene extends CGFscene {
 
 		this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
 
+		this.waterTexture = new CGFtexture(this, "textures/waterTex.jpg");
+
 		// shaders initialization
 
 		this.testShaders = [
@@ -90,7 +92,8 @@ export class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
 			new CGFshader(this.gl, "shaders/twocolor.vert", "shaders/twocolor.frag"),
-			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag")
+			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag"),
+			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
@@ -98,8 +101,8 @@ export class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
-
-
+		this.testShaders[11].setUniformsValues({ uSampler3: 2}); //pass to sampler 3 the water texture bound
+																 //to number 2
 		// Shaders interface variables
 
 		this.shadersList = {
@@ -113,7 +116,8 @@ export class ShaderScene extends CGFscene {
 			'Sepia': 7,
 			'Convolution': 8,
 			'Two Color Flat Shading' : 9,
-			'Grayscale': 10
+			'Grayscale': 10,
+			'Water': 11
 		};
 
 		// shader code panels references
@@ -230,6 +234,7 @@ export class ShaderScene extends CGFscene {
 
 		// bind additional texture to texture unit 1
 		this.texture2.bind(1);
+		this.waterTexture.bind(2); //bind to number 2 the water texture
 
 		if (this.selectedObject==0) {
 			// teapot (scaled and rotated to conform to our axis)
