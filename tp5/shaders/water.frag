@@ -10,7 +10,8 @@ uniform sampler2D uSampler2;
 uniform float timeFactor;
 
 void main() {
-    vec4 color = texture2D(uSampler3, vTextureCoord+vec2(timeFactor*.01,0.0));
+    vec4 color = texture2D(uSampler3, vTextureCoord2);
+
     vec4 filter = texture2D(uSampler2, vTextureCoord2);
 
     color = color - vec4(0.2*filter.b, 0.2*filter.b, 0.2*filter.b, 0.0);
