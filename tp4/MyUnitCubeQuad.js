@@ -2,14 +2,11 @@ import { CGFappearance, CGFobject } from '../lib/CGF.js';
 import { MyQuad } from './MyQuad.js';
 
 export class MyUnitCubeQuad extends CGFobject {
-    constructor(scene,top,front,right,back,left,bottom){
+    constructor(scene,front,top,bottom){
         super(scene);
         this.face = new MyQuad(this.scene);
         this.textureTop = top;
         this.textureFront = front;
-        this.textureRight = right;
-        this.textureBack = back;
-        this.textureLeft = left;
         this.textureBottom = bottom;
         this.initMaterials();
     }

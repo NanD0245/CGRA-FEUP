@@ -51,7 +51,7 @@ export class MyScene extends CGFscene {
         this.texture6 = new CGFtexture(this, 'images/mineTop.png');
         //-------
 
-        this.cubeQuad = new MyUnitCubeQuad(this,this.texture6,this.texture5,this.texture5,this.texture5,this.texture5,this.texture4);
+        this.cubeQuad = new MyUnitCubeQuad(this,this.texture5,this.texture6,this.texture4);
 
         //-------Objects connected to MyInterface
         this.displayCubeQuad = false;
