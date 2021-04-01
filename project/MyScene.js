@@ -1,5 +1,6 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MySphere } from "./MySphere.js";
+import { MyPyramid } from "./MyPyramid.js";
 
 /**
 * MyScene
@@ -29,6 +30,7 @@ export class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
+        this.pyramid = new MyPyramid(this, 4, 2);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -70,6 +72,35 @@ export class MyScene extends CGFscene {
         //To be done...
     }
 
+    checkKeys()  {
+
+        var text="Keys pressed: ";
+
+        var keysPressed = false;
+
+        // Check for key codes e.g. in https://keycode.info/
+
+        if (this.gui.isKeyPressed("KeyW")) {
+
+                text +=" W ";
+
+                keysPressed = true;
+
+        }
+
+        if (this.gui.isKeyPressed("KeyS"))        {
+
+                text += " S ";
+
+                keysPressed = true;
+
+        }
+
+        if (keysPressed)
+
+                console.log(text);
+    }
+
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -91,8 +122,10 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        this.incompleteSphere.display();
-
+        //this.incompleteSphere.display();
+        this.pushMatrix();
+        this.rotate(Math.PI / 2, 1, 0, 0);
+        this.pyramid.display();
         // ---- END Primitive drawing section
     }
 }
