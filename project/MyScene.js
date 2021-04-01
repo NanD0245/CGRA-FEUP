@@ -1,7 +1,6 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MySphere } from "./MySphere.js";
-import { MyPyramid } from "./MyPyramid.js";
-
+import { MyMovingObject } from "./MyMovingObject.js"
 /**
 * MyScene
 * @constructor
@@ -30,7 +29,7 @@ export class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
-        this.pyramid = new MyPyramid(this, 4, 2);
+        this.movingObject = new MyMovingObject(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -48,6 +47,8 @@ export class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayEsphere = false;
+        this.displayMovingObject = false;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -71,6 +72,26 @@ export class MyScene extends CGFscene {
     update(t){
         this.checkKeys();
         //To be done...
+        this.checkKeys();
+    }
+
+    checkKeys() {
+        var text="Keys pressed: ";
+        var keysPressed=false;
+
+        // Check for key codes e.g. in https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+            text+=" W ";
+            keysPressed=true;
+        }
+
+        if (this.gui.isKeyPressed("KeyS"))        {
+            text+=" S ";
+            keysPressed=true;
+        }
+
+        if (keysPressed)
+            console.log(text);
     }
 
     checkKeys()  {
@@ -123,11 +144,12 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        //this.incompleteSphere.display();
-        this.pushMatrix();
-        this.translate(0, 0, -0.5);
-        this.rotate(Math.PI / 2, 1, 0, 0);
-        this.pyramid.display();
+        if (this.displayEsphere)
+            this.incompleteSphere.display();
+
+        if (this.displayMovingObject)
+            this.movingObject.display();
+
         // ---- END Primitive drawing section
     }
 }
