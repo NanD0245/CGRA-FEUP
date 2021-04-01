@@ -1,4 +1,4 @@
-import { CGFobject } from "../lib/CGF.js";
+import { CGFappearance, CGFobject } from "../lib/CGF.js";
 import { MyPyramid } from "./MyPyramid.js";
 
 
@@ -9,6 +9,10 @@ export class MyMovingObject extends CGFobject {
     }
 
     display() {
+        this.scene.pushMatrix();
+        this.scene.translate(0,0,-0.5);
+        this.scene.rotate(Math.PI / 2, 1, 0, 0);
         this.pyramid.display();
+        this.scene.popMatrix();
     }
 }
