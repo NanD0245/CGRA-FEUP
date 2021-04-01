@@ -6,28 +6,34 @@ export class MyMovingObject extends CGFobject {
     constructor(scene) {
 		super(scene);
         this.pyramid = new MyPyramid(scene,4,1);
-        this.velocity = 0;
-        this.position = [0,0,0];
-        this.orientation = 0;
+        this.initBuffers();
+    }
+
+    initBuffers() {
+        this.position = [0,0,-0.5];
+        this.velocity = 0.0;
+        this.orientationXX = Math.PI / 2;
+        this.orientationYY = 0;
     }
 
     display() {
         this.scene.pushMatrix();
         this.scene.translate(this.position[0], this.position[1], this.position[2]); // move to final position
-        this.scene.translate(-this.position[0], -this.position[1], -this.position[2]);   
-        this.scene.translate(0,0,-0.5);
-        this.scene.rotate(Math.PI / 2, 1, 0, 0);
+        this.scene.rotate(this.orientationYY,0,1,0);
+        this.scene.translate(-this.position[0], -this.position[1], -this.position[2]);
+        this.scene.translate(this.position[0], this.position[1], this.position[2]);   
+        this.scene.rotate(this.orientationXX, 1, 0, 0);
         this.pyramid.display();
         this.scene.popMatrix();
     }
 
     update() {
-        this.position[0] += this.velocity * Math.sin(this.orientation);
-        this.position[2] += this.velocity * Math.cos(this.orientation);
+        this.position[0] += this.velocity * Math.sin(this.orientationYY);
+        this.position[2] += this.velocity * Math.cos(this.orientationYY);
     }
 
     turn(val) {
-        this.orientation += val;
+        this.orientationYY += val;
     }
 
     accelerate(val) {
@@ -36,7 +42,7 @@ export class MyMovingObject extends CGFobject {
 
     reset() {
         this.velocity = 0;
-        this.orientation = 0;
-        this.position = [0, 0, 0];
+        this.orientationYY = 0;
+        this.position = [0, 0, -0.5];
     }
 }
