@@ -69,6 +69,7 @@ export class MyScene extends CGFscene {
 
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
+        this.checkKeys();
         //To be done...
     }
 
@@ -124,6 +125,7 @@ export class MyScene extends CGFscene {
         //This sphere does not have defined texture coordinates
         //this.incompleteSphere.display();
         this.pushMatrix();
+        this.translate(0, 0, -0.5);
         this.rotate(Math.PI / 2, 1, 0, 0);
         this.pyramid.display();
         // ---- END Primitive drawing section
