@@ -49,7 +49,7 @@ export class MyScene extends CGFscene {
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayEsphere = false;
-        this.displayMovingObject = false;
+        this.displayMovingObject = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -71,9 +71,9 @@ export class MyScene extends CGFscene {
 
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
-        this.checkKeys();
-        this.movingObject.update();
         //To be done...
+        this.checkKeys()
+        this.movingObject.update();
     }
 
     checkKeys() {
@@ -97,13 +97,13 @@ export class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyA")) {
             text += " A ";
             keysPressed = true;
-            this.movingObject.turn(-Math.PI / 36);
+            this.movingObject.turn(+Math.PI / 36);
         }
 
         if (this.gui.isKeyPressed("KeyD")) {
             text += " D ";
             keysPressed = true;
-            this.movingObject.turn(Math.PI / 36);
+            this.movingObject.turn(-Math.PI / 36);
         }
 
         if (this.gui.isKeyPressed("KeyR")) {
@@ -112,7 +112,7 @@ export class MyScene extends CGFscene {
             this.movingObject.reset();
         }
 
-        if (keysPressed)
+        if (keysPressed) 
             console.log(text);
     }
 
