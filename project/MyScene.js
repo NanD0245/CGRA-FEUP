@@ -3,6 +3,7 @@ import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js"
 import { gui } from "../lib/dat.gui.module.min.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
+import { MyCylinder } from "./MyCylinder.js";
 /**
 * MyScene
 * @constructor
@@ -33,6 +34,7 @@ export class MyScene extends CGFscene {
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
+        this.cylinder = new MyCylinder(this,8,3);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -52,7 +54,8 @@ export class MyScene extends CGFscene {
         this.displayAxis = true;
         this.displayEsphere = false;
         this.displayMovingObject = false;
-        this.displayCubeQuad = true;
+        this.displayCubeQuad = false;
+        this.displayCylinder = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -146,9 +149,13 @@ export class MyScene extends CGFscene {
 
         if (this.displayMovingObject)
             this.movingObject.display();
-
+        
         if (this.displayCubeQuad)
             this.cubeQuad.display();
+
+        this.sphereAppearance.apply();
+        if (this.displayCylinder)
+            this.cylinder.display();
 
         // ---- END Primitive drawing section
     }
