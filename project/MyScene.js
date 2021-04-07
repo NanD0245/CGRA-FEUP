@@ -32,7 +32,7 @@ export class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.movingObject = new MyMovingObject(this);
-        this.cubeMap = new MyUnitCubeQuad(this);
+        this.cubeQuad = new MyUnitCubeQuad(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -51,7 +51,8 @@ export class MyScene extends CGFscene {
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayEsphere = false;
-        this.displayMovingObject = true;
+        this.displayMovingObject = false;
+        this.displayCubeQuad = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -60,6 +61,7 @@ export class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
+        //position(15,15,15)
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
     }
 
@@ -144,6 +146,9 @@ export class MyScene extends CGFscene {
 
         if (this.displayMovingObject)
             this.movingObject.display();
+
+        if (this.displayCubeQuad)
+            this.cubeQuad.display();
 
         // ---- END Primitive drawing section
     }
