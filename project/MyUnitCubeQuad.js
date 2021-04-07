@@ -10,6 +10,12 @@ export class MyUnitCubeQuad extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
+        
+        //camara position
+        this.scene.translate(15,15,15);
+        this.scene.scale(50,50,50);
+
+        this.scene.pushMatrix();
         this.scene.translate(0, 0, 0.5);
         this.face.display();
         this.scene.popMatrix();
@@ -42,6 +48,8 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(-0.5, 0, 0);
         this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.face.display();
+        this.scene.popMatrix();
+
         this.scene.popMatrix();
     }
 }
