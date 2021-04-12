@@ -31,7 +31,7 @@ export class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.incompleteSphere = new MySphere(this, 16, 8);
+        this.incompleteSphere = new MySphere(this, 16, 8); //slices, stacks
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.cylinder = new MyCylinder(this,8,3);
@@ -50,12 +50,24 @@ export class MyScene extends CGFscene {
 		this.sphereAppearance.setShininess(120);
 
 
+        this.worldMapTexture = new CGFtexture(this, "images/earth.jpg");
+
+        this.worldMap = new CGFappearance(this);
+		this.worldMap.setAmbient(0.3, 0.3, 0.3, 1);
+		this.worldMap.setDiffuse(0.7, 0.7, 0.7, 1);
+		this.worldMap.setSpecular(0.0, 0.0, 0.0, 1);
+		this.worldMap.setShininess(120);
+        this.worldMap.setTexture(this.worldMapTexture);
+        this.worldMap.setTextureWrap('REPEAT', 'REPEAT');
+
+
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.displayEsphere = false;
+        this.displayEsphere = true;
         this.displayMovingObject = false;
         this.displayCubeQuad = false;
-        this.displayCylinder = true;
+        this.displayCylinder = false;
+        this.worldMapTexture = false;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -144,8 +156,17 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        if (this.displayEsphere)
+        if (this.displayEsphere) {
+            this.pushMatrix();
+            if (this.worldMapTexture) {
+                this.worldMap.apply();
+                this.rotate(3*Math.PI/4,0,1,0);
+            }
             this.incompleteSphere.display();
+            this.popMatrix();
+        }
+        
+        this.sphereAppearance.apply();
 
         if (this.displayMovingObject)
             this.movingObject.display();
@@ -153,7 +174,7 @@ export class MyScene extends CGFscene {
         if (this.displayCubeQuad)
             this.cubeQuad.display();
 
-        this.sphereAppearance.apply();
+        //this.sphereAppearance.apply();
         if (this.displayCylinder)
             this.cylinder.display();
 
