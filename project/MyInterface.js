@@ -80,6 +80,9 @@ export class MyInterface extends CGFinterface {
         this.gui.add(this.scene, 'displayCubeQuad').name('Display Cube Quad');
         this.gui.add(this.scene, 'displayCylinder').name('Display Cylinder');
 
+        //slides
+        this.gui.add(this.scene, 'speedFactor', 0.1, 3).name('Speed Factor');
+
         this.initKeys();
 
         return true;

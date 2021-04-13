@@ -68,6 +68,7 @@ export class MyScene extends CGFscene {
         this.displayCubeQuad = false;
         this.displayCylinder = false;
         this.worldMapTexture = false;
+        this.speedFactor = 1;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -103,14 +104,14 @@ export class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW")) {
 
             text+=" W ";
-            this.movingObject.accelerate(0.1);
+            this.movingObject.accelerate(0.1*this.speedFactor);
             keysPressed=true;
         }
 
         if (this.gui.isKeyPressed("KeyS")) {
             text+=" S ";
             keysPressed=true;
-            this.movingObject.accelerate(-0.1);
+            this.movingObject.accelerate(-0.1*this.speedFactor);
         }
 
         if (this.gui.isKeyPressed("KeyA")) {
