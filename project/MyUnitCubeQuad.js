@@ -72,6 +72,34 @@ export class MyUnitCubeQuad extends CGFobject {
         this.sideMaterial4.setTextureWrap('REPEAT', 'REPEAT');
     }
 
+    updateTexture(){
+        if (this.scene.selectLandscape == 0) {
+            this.topMaterial.loadTexture('images/demo_cubemap/top.png');
+            this.bottomMaterial.loadTexture('images/demo_cubemap/bottom.png');
+            this.sideMaterial1.loadTexture('images/demo_cubemap/left.png');
+            this.sideMaterial2.loadTexture('images/demo_cubemap/back.png');
+            this.sideMaterial3.loadTexture('images/demo_cubemap/right.png');
+            this.sideMaterial4.loadTexture('images/demo_cubemap/front.png');
+
+        }
+        else if (this.scene.selectLandscape == 1) {
+            this.topMaterial.loadTexture('images/landscape1/top.jpg');
+            this.bottomMaterial.loadTexture('images/landscape1/bottom.jpg');
+            this.sideMaterial1.loadTexture('images/landscape1/left.jpg');
+            this.sideMaterial2.loadTexture('images/landscape1/back.jpg');
+            this.sideMaterial3.loadTexture('images/landscape1/right.jpg');
+            this.sideMaterial4.loadTexture('images/landscape1/front.jpg');
+        }
+        else if (this.scene.selectLandscape == -1) {
+            this.topMaterial.loadTexture('images/test_cubemap/py.png');
+            this.bottomMaterial.loadTexture('images/test_cubemap/ny.png');
+            this.sideMaterial1.loadTexture('images/test_cubemap/px.png');
+            this.sideMaterial2.loadTexture('images/test_cubemap/nz.png');
+            this.sideMaterial3.loadTexture('images/test_cubemap/nx.png');
+            this.sideMaterial4.loadTexture('images/test_cubemap/pz.png');
+        }
+    }
+
     display() {
 
         this.scene.pushMatrix();

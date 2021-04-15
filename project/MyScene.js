@@ -31,7 +31,7 @@ export class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.incompleteSphere = new MySphere(this, 16, 8); //slices, stacks
+        this.sphere = new MySphere(this, 16, 8); //slices, stacks
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.cylinder = new MyCylinder(this,8,3);
@@ -70,6 +70,8 @@ export class MyScene extends CGFscene {
         this.worldMapTexture = false;
         this.speedFactor = 1;
         this.scaleFactor = 1;
+        this.selectLandscape = 0;
+        this.landscapeIds = {'Example': 0, 'Landscape1': 1, 'Test': -1};
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -88,6 +90,10 @@ export class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setEmission(0,0,0,1);
         this.setShininess(10.0);
+    }
+
+    updateLandscape(){
+        this.cubeQuad.updateTexture();
     }
 
     // called periodically (as per setUpdatePeriod() in init())
@@ -164,7 +170,7 @@ export class MyScene extends CGFscene {
                 this.worldMap.apply();
                 this.rotate(3*Math.PI/4,0,1,0);
             }
-            this.incompleteSphere.display();
+            this.sphere.display();
             this.popMatrix();
         }
         

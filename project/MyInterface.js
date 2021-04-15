@@ -27,7 +27,7 @@ export class MyInterface extends CGFinterface {
 
         this.activeKeys={};
 
-    }
+    };
 
     processKeyDown(event) {
 
@@ -83,6 +83,9 @@ export class MyInterface extends CGFinterface {
         //slides
         this.gui.add(this.scene, 'speedFactor', 0.1, 3).name('Speed Factor');
         this.gui.add(this.scene, 'scaleFactor', 0.5, 3).name('Scale Factor');
+
+        //
+        this.gui.add(this.scene, 'selectLandscape', this.scene.landscapeIds).name('Selected Landscape').onChange(this.scene.updateLandscape.bind(this.scene));
 
         this.initKeys();
 
