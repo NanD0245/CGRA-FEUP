@@ -3,6 +3,7 @@ import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js"
 import { gui } from "../lib/dat.gui.module.min.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
+import { MyFish } from "./MyFish.js";
 /**
 * MyScene
 * @constructor
@@ -33,6 +34,7 @@ export class MyScene extends CGFscene {
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
+        this.fish = new MyFish(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -132,24 +134,25 @@ export class MyScene extends CGFscene {
         this.applyViewMatrix();
         
         
-        this.defaultAppearance.apply();
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
-        this.sphereAppearance.apply();
+//        this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        if (this.displayEsphere)
+ /*       if (this.displayEsphere)
             this.incompleteSphere.display();
 
         if (this.displayMovingObject)
-            this.movingObject.display();
+            this.movingObject.display(); */
 
+        this.fish.display();
         if (this.displayCubeQuad)
-            this.cubeQuad.display();
-
+            this.cubeQuad.display(); 
+        
+        this.defaultAppearance.apply();
         // ---- END Primitive drawing section
     }
 }
