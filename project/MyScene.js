@@ -36,6 +36,7 @@ export class MyScene extends CGFscene {
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.cylinder = new MyCylinder(this,8,3);
+        this.fish = new MyFish(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -162,7 +163,7 @@ export class MyScene extends CGFscene {
 
 //        this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
-
+/*
         //This sphere does not have defined texture coordinates
         if (this.displayEsphere) {
             this.pushMatrix();
@@ -185,7 +186,8 @@ export class MyScene extends CGFscene {
         //this.sphereAppearance.apply();
         if (this.displayCylinder)
             this.cylinder.display();
-
+*/
+        this.fish.display();
         // ---- END Primitive drawing section
     }
 }
