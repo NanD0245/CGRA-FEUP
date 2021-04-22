@@ -18,8 +18,8 @@ export class MyMovingObject extends CGFobject {
 
     display() {
         this.scene.pushMatrix();
-        this.scene.scale(this.scene.scaleFactor, this.scene.scaleFactor, this.scene.scaleFactor);
         this.scene.translate(this.position[0], this.position[1], this.position[2]); // move to final position
+        this.scene.scale(this.scene.scaleFactor, this.scene.scaleFactor, this.scene.scaleFactor);
         this.scene.rotate(this.orientationYY,0,1,0);
         this.scene.translate(-this.position[0], -this.position[1], -this.position[2]);
         this.scene.translate(this.position[0], this.position[1], this.position[2]);   

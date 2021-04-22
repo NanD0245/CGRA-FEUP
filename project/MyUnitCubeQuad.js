@@ -93,9 +93,9 @@ export class MyUnitCubeQuad extends CGFobject {
         else if (this.scene.selectLandscape == -1) {
             this.topMaterial.loadTexture('images/test_cubemap/py.png');
             this.bottomMaterial.loadTexture('images/test_cubemap/ny.png');
-            this.sideMaterial1.loadTexture('images/test_cubemap/px.png');
+            this.sideMaterial1.loadTexture('images/test_cubemap/nx.png');
             this.sideMaterial2.loadTexture('images/test_cubemap/nz.png');
-            this.sideMaterial3.loadTexture('images/test_cubemap/nx.png');
+            this.sideMaterial3.loadTexture('images/test_cubemap/px.png');
             this.sideMaterial4.loadTexture('images/test_cubemap/pz.png');
         }
     }
