@@ -3,6 +3,7 @@ import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js"
 import { gui } from "../lib/dat.gui.module.min.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
+import { MyFish } from "./MyFish.js";
 import { MyCylinder } from "./MyCylinder.js";
 /**
 * MyScene
@@ -155,12 +156,11 @@ export class MyScene extends CGFscene {
         this.applyViewMatrix();
         
         
-        this.defaultAppearance.apply();
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
-        this.sphereAppearance.apply();
+//        this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates

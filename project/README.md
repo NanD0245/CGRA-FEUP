@@ -8,3 +8,11 @@
 
 - In exercise 1 we observed X
 - In exercise 2 we had difficulties in Y
+
+## Screenshots
+
+
+### 1 - MyFish
+
+
+### 2 - Sea Floor
