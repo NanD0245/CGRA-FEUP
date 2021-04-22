@@ -1,11 +1,13 @@
 import { CGFappearance, CGFobject } from "../lib/CGF.js";
 import { MyPyramid } from "./MyPyramid.js";
+import { MyFish } from "./MyFish.js";
 
 
 export class MyMovingObject extends CGFobject {
     constructor(scene) {
 		super(scene);
-        this.pyramid = new MyPyramid(scene,4,1);
+        //this.pyramid = new MyPyramid(scene,4,1);
+        this.pyramid = new MyFish(scene);
         this.initBuffers();
     }
 
@@ -23,7 +25,7 @@ export class MyMovingObject extends CGFobject {
         this.scene.rotate(this.orientationYY,0,1,0);
         this.scene.translate(-this.position[0], -this.position[1], -this.position[2]);
         this.scene.translate(this.position[0], this.position[1], this.position[2]);   
-        this.scene.rotate(this.orientationXX, 1, 0, 0);
+        //this.scene.rotate(this.orientationXX, 1, 0, 0);
         this.pyramid.display();
         this.scene.popMatrix();
     }

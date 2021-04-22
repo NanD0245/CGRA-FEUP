@@ -65,7 +65,7 @@ export class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.displayEsphere = true;
+        this.displayEsphere = false;
         this.displayMovingObject = false;
         this.displayCubeQuad = false;
         this.displayCylinder = false;
@@ -103,6 +103,7 @@ export class MyScene extends CGFscene {
         //To be done...
         this.checkKeys()
         this.movingObject.update();
+        this.fish.animation();
     }
 
     checkKeys() {
@@ -161,9 +162,9 @@ export class MyScene extends CGFscene {
         if (this.displayAxis)
             this.axis.display();
 
-//        this.sphereAppearance.apply();
+        this.defaultAppearance.apply();
         // ---- BEGIN Primitive drawing section
-/*
+
         //This sphere does not have defined texture coordinates
         if (this.displayEsphere) {
             this.pushMatrix();
@@ -186,7 +187,7 @@ export class MyScene extends CGFscene {
         //this.sphereAppearance.apply();
         if (this.displayCylinder)
             this.cylinder.display();
-*/
+
         this.fish.display();
         // ---- END Primitive drawing section
     }
