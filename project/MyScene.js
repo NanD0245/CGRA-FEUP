@@ -34,7 +34,7 @@ export class MyScene extends CGFscene {
         this.sphere = new MySphere(this, 16, 8); //slices, stacks
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
-        this.cylinder = new MyCylinder(this,8,3);
+        this.cylinder = new MyCylinder(this,200,3);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
