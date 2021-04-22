@@ -106,6 +106,10 @@ export class MyScene extends CGFscene {
         this.cubeQuad.updateTexCoords(this.texCoords);
     }
 
+    updateTextures() {
+        this.cubeQuad.updateTextures();
+    }
+
     display() {
   
         // ---- BEGIN Background, camera and axis setup

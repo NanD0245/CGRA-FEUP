@@ -9,8 +9,8 @@ export class MySphere extends CGFobject {
    */
   constructor(scene, slices, stacks) {
     super(scene);
-    this.latDivs = stacks * 2;
-    this.longDivs = slices;
+    this.latDivs = stacks * 2; //total number of stacks along Y axis
+    this.longDivs = slices; //number of slices around Y axis
 
     this.initBuffers();
   }
@@ -32,6 +32,8 @@ export class MySphere extends CGFobject {
     var thetaInc = (2 * Math.PI) / this.longDivs;
     var latVertices = this.longDivs + 1;
 
+    var coordlat = 0;
+
     // build an all-around stack at a time, starting on "north pole" and proceeding "south"
     for (let latitude = 0; latitude <= this.latDivs; latitude++) {
       var sinPhi = Math.sin(phi);
@@ -39,6 +41,8 @@ export class MySphere extends CGFobject {
 
       // in each stack, build all the slices around, starting on longitude 0
       theta = 0;
+
+      var coordlong = 0;
       for (let longitude = 0; longitude <= this.longDivs; longitude++) {
         //--- Vertices coordinates
         var x = Math.cos(theta) * sinPhi;
@@ -70,8 +74,14 @@ export class MySphere extends CGFobject {
         // To be done... 
         // May need some additional code also in the beginning of the function.
         
+        this.texCoords.push(coordlong,coordlat);
+
+        coordlong += 1/this.longDivs;
+        
       }
       phi += phiInc;
+
+      coordlat += 1/this.latDivs;
     }
 
 

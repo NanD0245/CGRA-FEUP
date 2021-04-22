@@ -4,6 +4,7 @@ import { MyMovingObject } from "./MyMovingObject.js"
 import { gui } from "../lib/dat.gui.module.min.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 import { MyFish } from "./MyFish.js";
+import { MyCylinder } from "./MyCylinder.js";
 /**
 * MyScene
 * @constructor
@@ -31,10 +32,10 @@ export class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.incompleteSphere = new MySphere(this, 16, 8);
+        this.sphere = new MySphere(this, 16, 8); //slices, stacks
         this.movingObject = new MyMovingObject(this);
         this.cubeQuad = new MyUnitCubeQuad(this);
-        this.fish = new MyFish(this);
+        this.cylinder = new MyCylinder(this,8,3);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -50,11 +51,28 @@ export class MyScene extends CGFscene {
 		this.sphereAppearance.setShininess(120);
 
 
+        this.worldMapTexture = new CGFtexture(this, "images/earth.jpg");
+
+        this.worldMap = new CGFappearance(this);
+		this.worldMap.setAmbient(0.3, 0.3, 0.3, 1);
+		this.worldMap.setDiffuse(0.7, 0.7, 0.7, 1);
+		this.worldMap.setSpecular(0.0, 0.0, 0.0, 1);
+		this.worldMap.setShininess(120);
+        this.worldMap.setTexture(this.worldMapTexture);
+        this.worldMap.setTextureWrap('REPEAT', 'REPEAT');
+
+
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.displayEsphere = false;
+        this.displayEsphere = true;
         this.displayMovingObject = false;
-        this.displayCubeQuad = true;
+        this.displayCubeQuad = false;
+        this.displayCylinder = false;
+        this.worldMapTexture = false;
+        this.speedFactor = 1;
+        this.scaleFactor = 1;
+        this.selectLandscape = 0;
+        this.landscapeIds = {'Example': 0, 'Landscape1': 1, 'Test': -1};
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -64,7 +82,7 @@ export class MyScene extends CGFscene {
     }
     initCameras() {
         //position(15,15,15)
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));        
     }
 
     setDefaultAppearance() {
@@ -73,6 +91,10 @@ export class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setEmission(0,0,0,1);
         this.setShininess(10.0);
+    }
+
+    updateLandscape(){
+        this.cubeQuad.updateTexture();
     }
 
     // called periodically (as per setUpdatePeriod() in init())
@@ -90,14 +112,14 @@ export class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW")) {
 
             text+=" W ";
-            this.movingObject.accelerate(0.1);
+            this.movingObject.accelerate(0.1*this.speedFactor);
             keysPressed=true;
         }
 
         if (this.gui.isKeyPressed("KeyS")) {
             text+=" S ";
             keysPressed=true;
-            this.movingObject.accelerate(-0.1);
+            this.movingObject.accelerate(-0.1*this.speedFactor);
         }
 
         if (this.gui.isKeyPressed("KeyA")) {
@@ -142,17 +164,28 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
- /*       if (this.displayEsphere)
-            this.incompleteSphere.display();
+        if (this.displayEsphere) {
+            this.pushMatrix();
+            if (this.worldMapTexture) {
+                this.worldMap.apply();
+                this.rotate(3*Math.PI/4,0,1,0);
+            }
+            this.sphere.display();
+            this.popMatrix();
+        }
+        
+        this.sphereAppearance.apply();
 
         if (this.displayMovingObject)
-            this.movingObject.display(); */
-
-        this.fish.display();
-        if (this.displayCubeQuad)
-            this.cubeQuad.display(); 
+            this.movingObject.display();
         
-        this.defaultAppearance.apply();
+        if (this.displayCubeQuad)
+            this.cubeQuad.display();
+
+        //this.sphereAppearance.apply();
+        if (this.displayCylinder)
+            this.cylinder.display();
+
         // ---- END Primitive drawing section
     }
 }

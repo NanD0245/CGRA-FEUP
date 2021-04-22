@@ -27,7 +27,7 @@ export class MyInterface extends CGFinterface {
 
         this.activeKeys={};
 
-    }
+    };
 
     processKeyDown(event) {
 
@@ -75,8 +75,17 @@ export class MyInterface extends CGFinterface {
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         this.gui.add(this.scene, 'displayEsphere').name('Display Esphere');
+        this.gui.add(this.scene, 'worldMapTexture').name('Display Esphere with texture');
         this.gui.add(this.scene, 'displayMovingObject').name('Display Moving Object');
         this.gui.add(this.scene, 'displayCubeQuad').name('Display Cube Quad');
+        this.gui.add(this.scene, 'displayCylinder').name('Display Cylinder');
+
+        //slides
+        this.gui.add(this.scene, 'speedFactor', 0.1, 3).name('Speed Factor');
+        this.gui.add(this.scene, 'scaleFactor', 0.5, 3).name('Scale Factor');
+
+        //
+        this.gui.add(this.scene, 'selectLandscape', this.scene.landscapeIds).name('Selected Landscape').onChange(this.scene.updateLandscape.bind(this.scene));
 
         this.initKeys();
 
