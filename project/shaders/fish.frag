@@ -8,6 +8,8 @@ varying vec4 normal;
 varying vec2 vTextureCoord;
 
 uniform sampler2D uSampler;
+uniform float ratio;
+uniform vec4 body_color;
 
 void main() {
 	if (coords.x >= -0.3) { 

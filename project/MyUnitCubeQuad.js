@@ -106,7 +106,7 @@ export class MyUnitCubeQuad extends CGFobject {
         
         //camara position
         this.scene.translate(this.scene.camera.position[0],this.scene.camera.position[1],this.scene.camera.position[2]);
-        this.scene.scale(50,50,50);
+        this.scene.scale(100,100,100);
         
 
         this.scene.pushMatrix();
