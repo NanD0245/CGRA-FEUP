@@ -142,6 +142,18 @@ export class MyScene extends CGFscene {
             this.movingObject.reset();
         }
 
+        if (this.gui.isKeyPressed("KeyP")) {
+            text += " P ";
+            keysPressed = true;
+            //this.movingObject.reset();
+        }
+
+        if (this.gui.isKeyPressed("KeyL")) {
+            text += " L ";
+            keysPressed = true;
+            //this.movingObject.reset();
+        }
+
         if (keysPressed) 
             console.log(text);
     }
@@ -175,20 +187,21 @@ export class MyScene extends CGFscene {
             this.sphere.display();
             this.popMatrix();
         }
-        
-        this.sphereAppearance.apply();
 
         if (this.displayMovingObject)
             this.movingObject.display();
+
+        this.defaultAppearance.apply();
         
         if (this.displayCubeQuad)
             this.cubeQuad.display();
 
-        //this.sphereAppearance.apply();
+        this.sphereAppearance.apply();
+        
         if (this.displayCylinder)
             this.cylinder.display();
 
-        this.fish.display();
+        //this.fish.display();
         // ---- END Primitive drawing section
     }
 }

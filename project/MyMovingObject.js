@@ -12,7 +12,7 @@ export class MyMovingObject extends CGFobject {
     }
 
     initBuffers() {
-        this.position = [0,0,-0.5];
+        this.position = [0,3,0];
         this.velocity = 0.0;
         this.orientationXX = Math.PI / 2;
         this.orientationYY = 0;
@@ -30,9 +30,10 @@ export class MyMovingObject extends CGFobject {
         this.scene.popMatrix();
     }
 
-    update() {
+    update() {  
         this.position[0] += this.velocity * Math.sin(this.orientationYY);
         this.position[2] += this.velocity * Math.cos(this.orientationYY);
+        this.pyramid.animation();
     }
 
     turn(val) {
@@ -46,6 +47,6 @@ export class MyMovingObject extends CGFobject {
     reset() {
         this.velocity = 0;
         this.orientationYY = 0;
-        this.position = [0, 0, -0.5];
+        this.position = [0, 3, 0];
     }
 }

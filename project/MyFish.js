@@ -15,8 +15,8 @@ export class MyFish extends CGFobject {
         this.fin_orientation = true;
         this.dorsal = new MyTriangleSmall(this.scene);
         this.body = new MySphere(this.scene, 16, 8);
-        this.eye = new MySphere(this.scene, 16, 8);
         this.initBuffers();
+        this.eye = new MySphere(this.scene, 8, 4);
 
         //shader
         this.shader = new CGFshader(this.scene.gl, "shaders/fish.vert", "shaders/fish.frag");
@@ -57,7 +57,7 @@ export class MyFish extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0,3,0);
+        //this.scene.translate(0,3,0);
         this.scene.scale(1/3,1/3,1/3);
 
         this.bodyAppearance.apply();
@@ -83,10 +83,10 @@ export class MyFish extends CGFobject {
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), -0.25, +0.25);
+        this.scene.translate(0.715345, -0.25, +0.25);
         this.scene.rotate(-this.fin_offset, 0, 0, 1);
-        this.scene.translate(-Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), +0.25, -0.25);
-        this.scene.translate(Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), -0.25, +0.25);
+        this.scene.translate(-0.715345, +0.25, -0.25);
+        this.scene.translate(0.715345, -0.25, +0.25);
         this.scene.scale(0.5, 0.5, 0.5);
         this.scene.rotate(Math.PI / 5, 0, 0, 1);
         this.scene.translate(0, -Math.sqrt(2) / 2, -Math.sqrt(2) / 2);
@@ -96,10 +96,10 @@ export class MyFish extends CGFobject {
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(-Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), -0.25, +0.25);
+        this.scene.translate(-0.715345, -0.25, +0.25);
         this.scene.rotate(this.fin_offset, 0, 0, 1);
-        this.scene.translate(Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), +0.25, -0.25);
-        this.scene.translate(-Math.sqrt((1 - Math.pow(0.25, 2) / Math.pow(1.5, 2) - Math.pow(0.25, 2)) * Math.pow(0.75, 2)), -0.25, +0.25);
+        this.scene.translate(0.715345, +0.25, -0.25);
+        this.scene.translate(-0.715345, -0.25, +0.25);
         this.scene.scale(0.5, 0.5, 0.5);
         this.scene.rotate(-Math.PI / 5, 0, 0, 1);
         this.scene.translate(0, -Math.sqrt(2) / 2, -Math.sqrt(2) / 2);
