@@ -15,8 +15,8 @@ export class MyFish extends CGFobject {
         this.fin_orientation = true;
         this.dorsal = new MyTriangleSmall(this.scene);
         this.body = new MySphere(this.scene, 16, 8);
-        this.initBuffers();
         this.eye = new MySphere(this.scene, 16, 8);
+        this.initBuffers();
 
         //shader
         this.shader = new CGFshader(this.scene.gl, "shaders/fish.vert", "shaders/fish.frag");
