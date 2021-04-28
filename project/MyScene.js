@@ -5,6 +5,7 @@ import { gui } from "../lib/dat.gui.module.min.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 import { MyFish } from "./MyFish.js";
 import { MyCylinder } from "./MyCylinder.js";
+import { MySurface } from "./MySurface.js";
 /**
 * MyScene
 * @constructor
@@ -37,6 +38,7 @@ export class MyScene extends CGFscene {
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.cylinder = new MyCylinder(this,8,3);
         this.fish = new MyFish(this);
+        this.surface = new MySurface(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -200,6 +202,7 @@ export class MyScene extends CGFscene {
         if (this.displayCylinder)
             this.cylinder.display();
 
+        this.surface.display();
         //this.fish.display();
         // ---- END Primitive drawing section
     }
