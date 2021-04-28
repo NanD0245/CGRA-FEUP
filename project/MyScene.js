@@ -6,6 +6,7 @@ import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 import { MyFish } from "./MyFish.js";
 import { MyCylinder } from "./MyCylinder.js";
 import { MySeaFloor } from "./MySeaFloor.js"
+import { MySurface } from "./MySurface.js";
 
 /**
 * MyScene
@@ -40,6 +41,7 @@ export class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this,8,3);
         this.fish = new MyFish(this);
         this.sea_floor = new MySeaFloor(this);
+        this.surface = new MySurface(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -173,8 +175,8 @@ export class MyScene extends CGFscene {
         
         this.defaultAppearance.apply();
         // Draw axis
-        if (this.displayAxis)
-            this.axis.display();
+        //if (this.displayAxis)
+          //  this.axis.display();
 
         /*this.defaultAppearance.apply();*/
         // ---- BEGIN Primitive drawing section
@@ -199,6 +201,8 @@ export class MyScene extends CGFscene {
         
         //if (this.displayCubeQuad)
         this.cubeQuad.display();
+
+        this.surface.display();
 
         //this.fish.display();
         // ---- END Primitive drawing section

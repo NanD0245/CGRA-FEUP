@@ -93,7 +93,6 @@ export class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/twocolor.vert", "shaders/twocolor.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag"),
 			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
-			
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
