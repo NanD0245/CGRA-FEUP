@@ -12,7 +12,7 @@ uniform mat4 uNMatrix;
 
 varying vec2 vTextureCoord;
 
-uniform sampler2D uSamplerV;
+uniform sampler2D uSamplerV; //map
 uniform float multiply;
 uniform float subtract;
 
@@ -23,11 +23,11 @@ void main() {
     gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition.x , aVertexPosition.y , aVertexPosition.z + offset, 1.0);
 
     vTextureCoord = aTextureCoord;
+    
+    /*vTextureCoord = aTextureCoord;
 
+    vec3 offset = aVertexNormal * texture2D(uSamplerV, aTextureCoord).r * 0.1;
 
-    /*vec3 offset = aVertexNormal * texture2D(uSamplerV, aTextureCoord).r * 0.2;
+	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset, 1.0);*/
 
-    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset , 1.0);
-
-    vTextureCoord = aTextureCoord;*/
 }
