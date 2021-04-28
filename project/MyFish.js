@@ -16,7 +16,7 @@ export class MyFish extends CGFobject {
         this.dorsal = new MyTriangleSmall(this.scene);
         this.body = new MySphere(this.scene, 16, 8);
         this.initBuffers();
-        this.eye = new MySphere(this.scene, 8, 4);
+        this.eye = new MySphere(this.scene, 16, 8);
 
         //shader
         this.shader = new CGFshader(this.scene.gl, "shaders/fish.vert", "shaders/fish.frag");
@@ -53,22 +53,23 @@ export class MyFish extends CGFobject {
     }
 
     display() {
-        this.scene.setActiveShader(this.shader);
 
         this.scene.pushMatrix();
 
         //this.scene.translate(0,3,0);
         this.scene.scale(1/3,1/3,1/3);
 
-        this.bodyAppearance.apply();
 
         this.scene.pushMatrix();
+        this.scene.setActiveShader(this.shader);
+        this.bodyAppearance.apply();
         this.scene.scale(0.75, 1, 1.5);
         this.scene.rotate(Math.PI/2,0,1,0);
         this.body.display();
+        this.scene.setActiveShader(this.scene.defaultShader);
+
         this.scene.popMatrix();
 
-        this.scene.setActiveShader(this.scene.defaultShader);
 
         this.finAppearance.apply();
 
