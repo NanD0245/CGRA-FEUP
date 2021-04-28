@@ -1,7 +1,6 @@
-import { CGFobject, CGFappearance, CGFshader,CGFtexture } from "../lib/CGF.js";
-import { MyTriangleSmall } from "./MyTriangleSmall.js";
-import { MyTriangle } from "./MyTriangle.js";
-import { MySphere } from "./MySphere.js";
+import { CGFobject, CGFappearance, CGFshader,CGFtexture } from '../../../lib/CGF.js';
+import { MyTriangleSmall } from "../shapes/MyTriangleSmall.js";
+import { MySphere } from "../shapes/MySphere.js";
 
 export class MyFish extends CGFobject {
     constructor(scene) {
@@ -15,7 +14,7 @@ export class MyFish extends CGFobject {
         this.fin_orientation = true;
         this.dorsal = new MyTriangleSmall(this.scene);
         this.body = new MySphere(this.scene, 16, 8);
-        this.initBuffers();
+        //this.initBuffers();
         this.eye = new MySphere(this.scene, 16, 8);
 
         //shader

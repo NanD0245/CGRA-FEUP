@@ -1,13 +1,12 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture } from "../lib/CGF.js";
-import { MySphere } from "./MySphere.js";
-import { MyMovingObject } from "./MyMovingObject.js"
-import { gui } from "../lib/dat.gui.module.min.js";
-import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
-import { MyFish } from "./MyFish.js";
-import { MyCylinder } from "./MyCylinder.js";
-import { MySeaFloor } from "./MySeaFloor.js"
-import { MySurface } from "./MySurface.js";
-
+import { MySphere } from "./assets/shapes/MySphere.js";
+import { MyMovingObject } from "./assets/moving_object/MyMovingObject.js"
+import { MyUnitCubeQuad } from "./assets/scene_objects/MyUnitCubeQuad.js";
+import { MyFish } from "./assets/moving_object/MyFish.js";
+import { MyCylinder } from "./assets/shapes/MyCylinder.js";
+import { MySeaFloor } from "./assets/scene_objects/MySeaFloor.js"
+import { MySurface } from "./assets/scene_objects/MySurface.js";
+import { MyPillarSet } from "./assets/scene_objects/MyPillarSet.js"
 /**
 * MyScene
 * @constructor
@@ -42,6 +41,7 @@ export class MyScene extends CGFscene {
         this.fish = new MyFish(this);
         this.sea_floor = new MySeaFloor(this);
         this.surface = new MySurface(this);
+        this.pillarSet = new MyPillarSet(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -203,6 +203,8 @@ export class MyScene extends CGFscene {
         this.cubeQuad.display();
 
         this.surface.display();
+
+        this.pillarSet.display();
 
         //this.fish.display();
         // ---- END Primitive drawing section

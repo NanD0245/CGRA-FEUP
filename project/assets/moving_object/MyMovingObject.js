@@ -1,5 +1,5 @@
-import { CGFappearance, CGFobject } from "../lib/CGF.js";
-import { MyPyramid } from "./MyPyramid.js";
+import { CGFappearance, CGFobject } from '../../../lib/CGF.js';
+import { MyPyramid } from "../shapes/MyPyramid.js";
 import { MyFish } from "./MyFish.js";
 
 

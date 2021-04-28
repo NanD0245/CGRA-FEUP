@@ -1,5 +1,5 @@
-import { CGFappearance, CGFobject, CGFshader, CGFtexture } from "../lib/CGF.js";
-import { MyPlane } from "./MyPlane.js";
+import { CGFappearance, CGFobject } from '../../../lib/CGF.js';
+import { MyPlane } from "../shapes/MyPlane.js";
 
 export class MySurface extends CGFobject {
     constructor(scene) {

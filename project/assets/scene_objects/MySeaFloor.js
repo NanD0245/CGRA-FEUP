@@ -1,5 +1,5 @@
-import { CGFobject, CGFshader, CGFtexture, CGFappearance } from "../lib/CGF.js";
-import { MyPlane } from "./MyPlane.js";
+import {CGFobject, CGFshader, CGFtexture, CGFappearance} from '../../../lib/CGF.js';
+import { MyPlane } from "../shapes/MyPlane.js";
 
 export class MySeaFloor extends CGFobject {
     constructor(scene) {
@@ -9,12 +9,10 @@ export class MySeaFloor extends CGFobject {
 
         this.shader = new CGFshader(this.scene.gl, "shaders/sea_floor.vert", "shaders/sea_floor.frag");
         this.map = new CGFtexture(this.scene, "images/sandMap.png");
-        this.multiply = 0.3
-        this.subtract = 0.1
+        this.multiply = 0.12
+        this.subtract = 0.06
 
-        this.shader.setUniformsValues({uSamplerV: 1, multiply: 0.12, subtract: 0.06});
-        //this.shader.setUniformsValues({multiply: 2});
-        //this.shader.setUniformsValues({subtract: 3});
+        this.shader.setUniformsValues({uSamplerV: 1, multiply: this.multiply, subtract: this.subtract});
 
         this.initMaterials();
     }
