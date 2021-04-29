@@ -192,6 +192,8 @@ export class MyScene extends CGFscene {
 
         this.surface.display();
 
+        this.defaultAppearance.apply();
+
         this.pillarSet.display();
         
         this.nest.display();
