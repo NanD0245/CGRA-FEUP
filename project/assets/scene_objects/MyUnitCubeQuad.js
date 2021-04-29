@@ -1,5 +1,5 @@
-import { CGFappearance, CGFobject, CGFtexture } from '../lib/CGF.js';
-import { MyQuad } from './MyQuad.js';
+import {CGFappearance, CGFobject, CGFtexture} from '../../../lib/CGF.js';
+import { MyQuad } from '../shapes/MyQuad.js';
 
 export class MyUnitCubeQuad extends CGFobject {
     constructor(scene){
@@ -10,12 +10,12 @@ export class MyUnitCubeQuad extends CGFobject {
 
     initMaterials() {
 
-        this.texture1 = new CGFtexture(this.scene, "images/demo_cubemap/left.png");
-        this.texture2 = new CGFtexture(this.scene, "images/demo_cubemap/bottom.png");
-        this.texture3 = new CGFtexture(this.scene, "images/demo_cubemap/back.png");
-        this.texture4 = new CGFtexture(this.scene, "images/demo_cubemap/right.png");
-        this.texture5 = new CGFtexture(this.scene, "images/demo_cubemap/top.png");
-        this.texture6 = new CGFtexture(this.scene, "images/demo_cubemap/front.png");
+        this.texture1 = new CGFtexture(this.scene, "images/underwater_cubemap/left.jpg");
+        this.texture2 = new CGFtexture(this.scene, "images/underwater_cubemap/bottom.jpg");
+        this.texture3 = new CGFtexture(this.scene, "images/underwater_cubemap/back.jpg");
+        this.texture4 = new CGFtexture(this.scene, "images/underwater_cubemap/right.jpg");
+        this.texture5 = new CGFtexture(this.scene, "images/underwater_cubemap/top.jpg");
+        this.texture6 = new CGFtexture(this.scene, "images/underwater_cubemap/front.jpg");
 
         this.sideMaterial1 = new CGFappearance(this.scene);
         this.sideMaterial1.setAmbient(0.0, 0.0, 0.0, 0.0);
@@ -74,12 +74,12 @@ export class MyUnitCubeQuad extends CGFobject {
 
     updateTexture(){
         if (this.scene.selectLandscape == 0) {
-            this.topMaterial.loadTexture('images/demo_cubemap/top.png');
-            this.bottomMaterial.loadTexture('images/demo_cubemap/bottom.png');
-            this.sideMaterial1.loadTexture('images/demo_cubemap/left.png');
-            this.sideMaterial2.loadTexture('images/demo_cubemap/back.png');
-            this.sideMaterial3.loadTexture('images/demo_cubemap/right.png');
-            this.sideMaterial4.loadTexture('images/demo_cubemap/front.png');
+            this.topMaterial.loadTexture('images/underwater_cubemap/top.jpg');
+            this.bottomMaterial.loadTexture('images/underwater_cubemap/bottom.jpg');
+            this.sideMaterial1.loadTexture('images/underwater_cubemap/left.jpg');
+            this.sideMaterial2.loadTexture('images/underwater_cubemap/back.jpg');
+            this.sideMaterial3.loadTexture('images/underwater_cubemap/right.jpg');
+            this.sideMaterial4.loadTexture('images/underwater_cubemap/front.jpg');
 
         }
         else if (this.scene.selectLandscape == 1) {
@@ -112,7 +112,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(0, 0, 0.5);
         this.sideMaterial4.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
 
@@ -120,7 +119,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(0, 0, -0.5);
         this.scene.rotate(Math.PI, 0, 1, 0);
         this.sideMaterial2.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
         
@@ -128,7 +126,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(0, 0.5, 0);
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
         this.topMaterial.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
 
@@ -136,7 +133,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(0, -0.5, 0);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.bottomMaterial.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
 
@@ -144,7 +140,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(0.5, 0, 0);
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.sideMaterial3.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
 
@@ -152,7 +147,6 @@ export class MyUnitCubeQuad extends CGFobject {
         this.scene.translate(-0.5, 0, 0);
         this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.sideMaterial1.apply();
-        this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
         this.face.display();
         this.scene.popMatrix();
 
