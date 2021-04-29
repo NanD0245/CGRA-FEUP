@@ -13,12 +13,21 @@ export class MyRock extends CGFobject {
     this.longDivs = slices;
     this.initBuffers();
     this.center = [0,0,0];
+    this.orientation = 0;
+    this.scalement = [1,1,1];
   }
 
-  setCenter(x,y,z) {
-    this.center = [x,y,z];
-  }
+  setCenter(x,y,z) { this.center = [x,y,z];}
 
+  getCenter() { return this.center; }
+
+  setOrientation(x) { this.orientation = x;}
+
+  getOrientation() { return this.orientation; }
+
+  setScalement(x,y,z) { this.scalement = [x,y,z]; }
+
+  getScalement() { return this.scalement; }
   /**
    * @method initBuffers
    * Initializes the sphere buffers

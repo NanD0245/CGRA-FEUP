@@ -197,5 +197,7 @@ export class MyScene extends CGFscene {
         this.pillarSet.display();
         
         this.nest.display();
+
+        this.rockSet.display();
     }
 }

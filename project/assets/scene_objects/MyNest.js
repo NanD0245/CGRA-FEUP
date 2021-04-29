@@ -6,7 +6,7 @@ export class MyNest extends CGFobject {
         super(scene);
         this.rock = new MyRock(scene,16,8);
         this.initMaterials();
-        this.radius = 4;
+        this.radius = 5;
         this.center = [-7.0,0.0,-8.0];
     }
 
