@@ -8,6 +8,7 @@ import { MySeaFloor } from "./assets/scene_objects/MySeaFloor.js"
 import { MySurface } from "./assets/scene_objects/MySurface.js";
 import { MyPillarSet } from "./assets/scene_objects/MyPillarSet.js";
 import { MyRockSet } from "./assets/scene_objects/MyRockSet.js";
+import { MyNest } from "./assets/scene_objects/MyNest.js";
 /**
 * MyScene
 * @constructor
@@ -44,6 +45,7 @@ export class MyScene extends CGFscene {
         this.surface = new MySurface(this);
         this.pillarSet = new MyPillarSet(this);
         this.rockSet = new MyRockSet(this,16,8);
+        this.nest = new MyNest(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -192,7 +194,6 @@ export class MyScene extends CGFscene {
 
         this.pillarSet.display();
         
-        this.translate(1,0,0);
-        this.rockSet.display();
+        this.nest.display();
     }
 }

@@ -11,8 +11,12 @@ export class MyRock extends CGFobject {
     super(scene);
     this.latDivs = stacks * 2;
     this.longDivs = slices;
-
     this.initBuffers();
+    this.center = [0,0,0];
+  }
+
+  setCenter(x,y,z) {
+    this.center = [x,y,z];
   }
 
   /**
@@ -34,6 +38,11 @@ export class MyRock extends CGFobject {
 
     var coordlat = 0;
 
+    var random_i = (Math.floor(Math.random() * 41) - 20) / 200;
+    var x_i = Math.cos(theta) * Math.sin(phi); + random_i;
+    var y_i = Math.cos(phi); + random_i;
+    var z_i = Math.sin(-theta) * Math.sin(phi); + random_i;
+
     for (let latitude = 0; latitude <= this.latDivs; latitude++) {
       var sinPhi = Math.sin(phi);
       var cosPhi = Math.cos(phi);
@@ -46,8 +55,10 @@ export class MyRock extends CGFobject {
         var x = Math.cos(theta) * sinPhi + random;
         var y = cosPhi + random;
         var z = Math.sin(-theta) * sinPhi + random;
-
-        this.vertices.push(x, y, z);
+        if (latitude == 0 || latitude == this.latDivs) {
+          this.vertices.push(x_i, y_i, z_i);
+        }
+        else this.vertices.push(x, y, z);
 
         if (latitude < this.latDivs && longitude < this.longDivs) {
           var current = latitude * latVertices + longitude;
@@ -56,8 +67,10 @@ export class MyRock extends CGFobject {
           this.indices.push( current + 1, current, next);
           this.indices.push( current + 1, next, next +1);
         }
-
-        this.normals.push(x - random, y - random , z - random);
+        if (latitude == 0 || latitude == this.latDivs) {
+          this.normals.push(x_i - random_i, y_i - random_i , z_i - random_i);
+        }
+        else this.normals.push(x - random, y - random , z - random);
         theta += thetaInc;
 
         
