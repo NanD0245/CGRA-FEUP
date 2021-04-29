@@ -9,6 +9,12 @@ export class MySurface extends CGFobject {
         
         this.plane = new MyPlane(this.scene, 20);
         
+        this.distortion = new CGFtexture(this.scene, "images/distortionmap.png");
+        this.subtract = 0.5;
+        this.multiply = 0.6; 
+        this.shader = new CGFshader(this.scene.gl, "shaders/surface.vert", "shaders/surface.frag");
+
+        this.shader.setUniformsValues({distortionmap: 2, subtract: this.subtract, multiply: this.multiply});
     }
 
     initMaterials() {
@@ -25,12 +31,13 @@ export class MySurface extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
-
-
-        this.material.apply();
+    
+        this.scene.setActiveShader(this.shader);
+        this.distortion.bind(2);
         this.scene.scale(100, 1, 100);
         this.scene.translate(0, 10, 0);
         this.scene.rotate(Math.PI / 2, 1, 0, 0);
+        this.material.apply();
         this.plane.display();
 
         this.scene.setActiveShader(this.scene.defaultShader);

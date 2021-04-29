@@ -9,8 +9,8 @@ export class MySeaFloor extends CGFobject {
 
         this.shader = new CGFshader(this.scene.gl, "shaders/sea_floor.vert", "shaders/sea_floor.frag");
         this.map = new CGFtexture(this.scene, "images/sandMap.png");
-        this.multiply = 0.12
-        this.subtract = 0.06
+        this.multiply = 0.12;
+        this.subtract = 0.06;
 
         this.shader.setUniformsValues({uSamplerV: 1, multiply: this.multiply, subtract: this.subtract});
 
