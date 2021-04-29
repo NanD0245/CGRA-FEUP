@@ -190,6 +190,8 @@ export class MyScene extends CGFscene {
 
         this.surface.display();
 
+        this.defaultAppearance.apply();
+
         this.pillarSet.display();
         
         this.translate(1,0,0);
