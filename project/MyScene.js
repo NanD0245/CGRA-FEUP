@@ -121,6 +121,7 @@ export class MyScene extends CGFscene {
     this.checkKeys();
     this.movingObject.update();
     this.fish.animation();
+    this.surface.update(t);
   }
 
   checkKeys() {
@@ -184,7 +185,7 @@ export class MyScene extends CGFscene {
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
 
-    this.defaultAppearance.apply();
+    //this.defaultAppearance.apply();
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
@@ -196,13 +197,13 @@ export class MyScene extends CGFscene {
 
     this.cubeQuad.display();
 
+    
     this.surface.display();
 
     this.defaultAppearance.apply();
 
     this.pillarSet.display();
 
-    this.translate(1, 0, 0);
     this.rockSet.display();
   }
 }

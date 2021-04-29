@@ -10,24 +10,30 @@ uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 uniform mat4 uNMatrix;
 
-uniform float normScale;
-varying vec4 coords;
-varying vec4 normal;
-
 varying vec2 vTextureCoord;
+varying vec2 manipulatedTexCoord;
 
 uniform sampler2D distortionmap;
 uniform float subtract;
 uniform float multiply;
+uniform float timeFactor;
+
 
 void main() {
 
-    float offsetX = (texture2D(distortionmap, aTextureCoord).r  - subtract) * multiply;
-    float offsetZ = (texture2D(distortionmap, aTextureCoord).g  - subtract) * multiply;
 
-	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition.x + offsetX, aVertexPosition.y, aVertexPosition.z + offsetZ, 1.0);
+    float offsetR = (texture2D(distortionmap, aTextureCoord).r  - subtract) * multiply;
+    float offsetG = (texture2D(distortionmap, aTextureCoord).g  - subtract) * multiply;
 
-	vTextureCoord = aTextureCoord;
-
-    coords = vec4(aVertexPosition, 1.0);
+    if (aTextureCoord.s + offsetR >= 0.0 && aTextureCoord.s + offsetR <= 1.0 && aTextureCoord.t + offsetG >= 0.0 && aTextureCoord.t + offsetG <= 1.0) 
+        vTextureCoord = vec2(aTextureCoord.s + offsetR, aTextureCoord.t + offsetG);
+    else if (aTextureCoord.s + offsetR >= 0.0 && aTextureCoord.s + offsetR <= 1.0)
+        vTextureCoord = vec2(aTextureCoord.s + offsetR, aTextureCoord.t);
+    else if (aTextureCoord.t + offsetG >= 0.0 && aTextureCoord.t + offsetG <= 1.0)
+        vTextureCoord = vec2(aTextureCoord.s, aTextureCoord.t + offsetG);
+    else
+        vTextureCoord = vec2(aTextureCoord.s + offsetR, aTextureCoord.t + offsetG);
+    
+	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition , 1.0);
+    
 }
