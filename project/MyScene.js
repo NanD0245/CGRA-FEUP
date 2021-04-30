@@ -55,6 +55,7 @@ export class MyScene extends CGFscene {
     this.pillarSet = new MyPillarSet(this);
     this.rockSet = new MyRockSet(this);
     this.algae = new MyAlgaeSet(this);
+    this.nest = new MyNest(this);
 
     this.defaultAppearance = new CGFappearance(this);
     this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -189,7 +190,7 @@ export class MyScene extends CGFscene {
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
 
-    //this.defaultAppearance.apply();
+    this.defaultAppearance.apply();
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
@@ -201,7 +202,8 @@ export class MyScene extends CGFscene {
 
     this.cubeQuad.display();
 
-    
+    this.nest.display();
+
     this.surface.display();
 
     this.defaultAppearance.apply();

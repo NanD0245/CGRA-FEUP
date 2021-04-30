@@ -7,7 +7,7 @@ export class MySurface extends CGFobject {
 
         this.initMaterials();
         
-        this.plane = new MyPlane(this.scene, 100);
+        this.plane = new MyPlane(this.scene, 200);
         
         this.distortion = new CGFtexture(this.scene, "images/distortionmap.png");
         this.subtract = 0.5;
@@ -29,7 +29,7 @@ export class MySurface extends CGFobject {
     }
 
     update(t) {
-        this.shader.setUniformsValues({timeFactor: (t / 100 % 100)})
+        this.shader.setUniformsValues({timeFactor: t % 100000})
     }
 
     display() {
