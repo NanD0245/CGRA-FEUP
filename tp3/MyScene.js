@@ -32,7 +32,7 @@ export class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new MyPlane(this, 5);
         this.cone = new MyCone(this, 3, 1);
-        this.pyramid = new MyPyramid(this, 3, 1);
+        this.pyramid = new MyPyramid(this, 3, 1, Math.random() + 1.0);
         this.cubeQuad = new MyUnitCubeQuad(this);
         this.tangram = new MyTangram(this);
         this.unitCube = new MyUnitCube(this);
@@ -112,9 +112,9 @@ export class MyScene extends CGFscene {
     initMaterials() {
         // Red Ambient (no diffuse, no specular)
         this.material1 = new CGFappearance(this);
-        this.material1.setAmbient(1, 0, 0, 1.0);
-        this.material1.setDiffuse(0, 0, 0, 1.0);
-        this.material1.setSpecular(0, 0, 0, 1.0);
+        this.material1.setAmbient(0.6, 0.8, 0.19, 1.0);
+        this.material1.setDiffuse(0.6, 0.8, 0.19, 1.0);
+        this.material1.setSpecular(0.6, 0.8, 0.19, 1.0);
         this.material1.setShininess(10.0);
 
         // Red Diffuse (no ambient, no specular)
@@ -182,20 +182,18 @@ export class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        this.materials[this.selectedMaterial].apply();
+        this.materials[/*this.selectedMaterial*/ 0].apply();
 
-
-        this.pushMatrix();
-        this.scale(this.scaleFactor,this.scaleFactor,this.scaleFactor);
-        
-        if (this.displayNormals)
+            this.pushMatrix();
+            this.scale(0.10, this.pyramid.height, 0.10); 
+            if (this.displayNormals)
             this.objects[this.selectedObject].enableNormalViz();
-        else
+            else
             this.objects[this.selectedObject].disableNormalViz();
-        
-        this.objects[this.selectedObject].display();
-
-        this.popMatrix();
+            
+            this.objects[this.selectedObject].display();
+            
+            this.popMatrix();
         // ---- END Primitive drawing section
     }
 }

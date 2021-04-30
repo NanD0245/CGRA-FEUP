@@ -24,7 +24,7 @@ export class MyRockSet extends CGFobject {
 
     randomTexture() {
         var t = Math.floor(Math.random() * 2);
-        if (t == 0) this.rockAppearance.loadTexture("images/rock/rock_texture2.jpg");
+        if (t <= 1) this.rockAppearance.loadTexture("images/rock/rock_texture2.jpg");
         else this.rockAppearance.loadTexture("images/rock/rock_texture1.jpg");
     }
 
