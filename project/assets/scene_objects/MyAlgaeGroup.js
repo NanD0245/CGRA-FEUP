@@ -22,7 +22,7 @@ export class MyAlgaeGroup extends CGFobject {
         var algy = this.algae[i];
 
         this.scene.pushMatrix();
-        this.scene.translate(this.center[0] + 0.1*Math.cos(Math.PI / i), 0, this.center[1] + 0.1 * Math.sin(Math.PI / i));
+        this.scene.translate(this.center[0] + 0.5*Math.cos(Math.PI/6 * i), 0, this.center[1] + 0.5 * Math.sin(Math.PI/6 * i));
         algy.display(); 
         this.scene.popMatrix();
     }
