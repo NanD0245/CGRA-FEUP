@@ -144,12 +144,14 @@ export class MyScene extends CGFscene {
 
     if (this.gui.isKeyPressed("KeyA")) {
       text += " A ";
+      this.movingFish.pyramid.turningLeft = true;
       keysPressed = true;
       this.movingFish.turn(+Math.PI / 36);
     }
 
     if (this.gui.isKeyPressed("KeyD")) {
       text += " D ";
+      this.movingFish.pyramid.turningRight = true;
       keysPressed = true;
       this.movingFish.turn(-Math.PI / 36);
     }
@@ -175,6 +177,8 @@ export class MyScene extends CGFscene {
     }
 
     if (keysPressed) console.log(text);
+    if (this.movingFish.pyramid.turningLeft) console.log("Turning left");
+    if (this.movingFish.pyramid.turningRight) console.log("Turning Right");
   }
 
   display() {
