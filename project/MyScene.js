@@ -163,12 +163,14 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyP")) {
       text += " P ";
       keysPressed = true;
+      this.movingFish.ascend();
       //this.movingObject.reset();
     }
 
     if (this.gui.isKeyPressed("KeyL")) {
       text += " L ";
       keysPressed = true;
+      this.movingFish.descend();
       //this.movingObject.reset();
     }
 

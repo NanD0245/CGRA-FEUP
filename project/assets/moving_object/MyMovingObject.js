@@ -11,7 +11,7 @@ export class MyMovingObject extends CGFobject {
     }
 
     initBuffers() {
-        this.position = [0,3,0];
+        this.position = [0,5,0];
         this.velocity = 0.0;
         this.orientationXX = Math.PI / 2;
         this.orientationYY = 0;
@@ -46,6 +46,16 @@ export class MyMovingObject extends CGFobject {
     reset() {
         this.velocity = 0;
         this.orientationYY = 0;
-        this.position = [0, 3, 0];
+        this.position = [0, 5, 0];
+    }
+
+    ascend() {
+        if (this.position[1] >= 0.5 && this.position[1] <= 5.0)
+            this.position[1] += 0.1;
+    }
+
+    descend() {
+        if (this.position[1] >= 0.6 && this.position[1] <= 5.1) 
+            this.position[1] -= 0.1;
     }
 }
