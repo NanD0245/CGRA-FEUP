@@ -132,6 +132,7 @@ export class MyScene extends CGFscene {
     // Check for key codes e.g. in https://keycode.info/
     if (this.gui.isKeyPressed("KeyW")) {
       text += " W ";
+      this.movingFish.pyramid.tail_speed += 0.3;
       this.movingFish.accelerate(0.1 * this.speedFactor);
       keysPressed = true;
     }
@@ -139,6 +140,7 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyS")) {
       text += " S ";
       keysPressed = true;
+        this.movingFish.pyramid.tail_speed -= 0.3;
       this.movingFish.accelerate(-0.1 * this.speedFactor);
     }
 
@@ -159,6 +161,7 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyR")) {
       text += " R ";
       keysPressed = true;
+      this.movingFish.pyramid.tail_speed = 1;
       this.movingFish.reset();
     }
 
