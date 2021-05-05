@@ -24,7 +24,6 @@ export class MyFish extends CGFobject {
     this.right_fin_orientation = true;
     this.dorsal = new MyTriangleSmall(this.scene);
     this.body = new MySphere(this.scene, 16, 8);
-    //this.initBuffers();
     this.eye = new MySphere(this.scene, 16, 8);
 
     //shader
@@ -213,8 +212,6 @@ export class MyFish extends CGFobject {
         this.right_fin_orientation = true;
       }
     }
-
-    console.log("Tail speed " + Math.abs(this.tail_speed));
 
     if (this.turningLeft) this.turningLeft = false;
     if (this.turningRight) this.turningRight = false;
