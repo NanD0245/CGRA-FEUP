@@ -45,11 +45,14 @@ export class MyRock extends CGFobject {
     var thetaInc = (2 * Math.PI) / this.longDivs;
     var latVertices = this.longDivs + 1;
 
+
     var coordlat = 0;
 
     for (let latitude = 0; latitude <= this.latDivs; latitude++) {
       var sinPhi = Math.sin(phi);
       var cosPhi = Math.cos(phi);
+
+      var i_point = [];
 
       theta = 0;
 
@@ -59,10 +62,15 @@ export class MyRock extends CGFobject {
         var x = Math.cos(theta) * sinPhi + random;
         var y = cosPhi + random;
         var z = Math.sin(-theta) * sinPhi + random;
-        if (longitude != this.longDivs) {
-          this.vertices.push(x, y, z);
+
+        if (longitude == 0) {
+          i_point.push(x,y,z,random);
         }
-        else this.vertices.push(this.vertices[0 /*+ this.latDivs * latitude*/], this.vertices[1 /*+ this.latDivs * latitude*/], this.vertices[2 /*+ this.latDivs * latitude*/]);
+
+        if (longitude != this.longDivs)
+          this.vertices.push(x, y, z);
+        else this.vertices.push(i_point[0],i_point[1],i_point[2])
+        
 
         if (latitude < this.latDivs && longitude < this.longDivs) {
           var current = latitude * latVertices + longitude;
@@ -74,7 +82,8 @@ export class MyRock extends CGFobject {
         if (longitude != this.longDivs) {
           this.normals.push(x - random, y - random , z - random);
         }
-        else this.normals.push(this.normals[0], this.normals[1] , this.normals[2]);
+        else this.normals.push(i_point[0] - i_point[3], i_point[1] - i_point[3] , i_point[2] - i_point[3]);
+
         theta += thetaInc;
 
         
