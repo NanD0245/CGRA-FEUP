@@ -17,6 +17,7 @@ import { MyAlgaeSet } from "./assets/scene_objects/MyAlgaeSet.js";
 import { MyRock } from "./assets/scene_objects/MyRock.js";
 
 import { MyMovingFish } from "./assets/moving_object/MyMovingFish.js";
+import { MyAutomatedFish } from "./assets/moving_object/MyAutomatedFish.js";
 
 /**
  * MyScene
@@ -57,6 +58,7 @@ export class MyScene extends CGFscene {
     this.nest = new MyNest(this);
     this.rock = new MyRock(this,16,8);
     this.sphere = new MySphere(this,16,8);
+    this.automated = new MyAutomatedFish(this);
 
     this.defaultAppearance = new CGFappearance(this);
     this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -126,6 +128,7 @@ export class MyScene extends CGFscene {
     //To be done...
     this.checkKeys();
     this.movingFish.update();
+    this.automated.update();
     this.surface.update(t);
   }
 
@@ -228,6 +231,7 @@ export class MyScene extends CGFscene {
 
     this.algae.display();
 
+    this.automated.display();
     //this.sphere.display();
 
     //this.translate(3,0,0);
