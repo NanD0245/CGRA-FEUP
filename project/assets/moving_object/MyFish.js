@@ -13,7 +13,7 @@ export class MyFish extends CGFobject {
     this.turningLeft = false;
     this.turningRight = false;
     this.tail = new MyTriangleSmall(this.scene);
-    this.tail_speed = 1;
+    this.tail_speed = 0;
     this.tail_offset = 0;
     this.tail_orientation = true;
     this.leftFin = new MyTriangleSmall(this.scene);
@@ -157,14 +157,14 @@ export class MyFish extends CGFobject {
 
   animation() {
     if (this.tail_orientation && this.tail_offset < Math.PI / 9)
-      this.tail_offset += Math.PI / 25 * Math.abs(this.tail_speed);
+      this.tail_offset += Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
     else if (this.tail_orientation && this.tail_offset >= Math.PI / 9) {
-      this.tail_offset -= Math.PI / 25 * Math.abs(this.tail_speed);
+      this.tail_offset -= Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
       this.tail_orientation = false;
     } else if (!this.tail_orientation && this.tail_offset > -Math.PI / 9)
-      this.tail_offset -= Math.PI / 25 * Math.abs(this.tail_speed);
+      this.tail_offset -= Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
     else if (!this.tail_orientation && this.tail_offset <= -Math.PI / 9) {
-      this.tail_offset += Math.PI / 25 * Math.abs(this.tail_speed);
+      this.tail_offset += Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
       this.tail_orientation = true;
     }
     if (!this.turningLeft) {

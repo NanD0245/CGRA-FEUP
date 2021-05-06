@@ -50,12 +50,12 @@ export class MyMovingObject extends CGFobject {
     }
 
     ascend() {
-        if (this.position[1] >= 0.5 && this.position[1] <= 5.0)
+        if (this.position[1] >= 0.9 && this.position[1] < 5.0)
             this.position[1] += 0.1;
     }
 
     descend() {
-        if (this.position[1] >= 0.6 && this.position[1] <= 5.1) 
+        if (this.position[1] >= 1 && this.position[1] <= 5.1) 
             this.position[1] -= 0.1;
     }
 }

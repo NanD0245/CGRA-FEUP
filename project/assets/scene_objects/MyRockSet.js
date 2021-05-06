@@ -59,19 +59,13 @@ export class MyRockSet extends CGFobject {
 
     display() {
         for (let i = 0; i < 20; i++) {
-            
-            var p = this.rocks[i].getCenter();
-            var o = this.rocks[i].getOrientation();
-            var s = this.rocks[i].getScalement();
-            var rock = this.rocks[i];
-            
-            this.scene.pushMatrix();
-            this.scene.translate(p[0],p[1],p[2]);
-            this.scene.scale(s[0],s[1],s[2]);
-            this.scene.rotate(o,0,1,0);
-            this.rockAppearance.apply();
-            rock.display();
-            this.scene.popMatrix();
+            this.rocks[i].display();
+        }
+    }
+
+    reset() {
+        for (let i = 0; i < 20; i++) {
+            this.rocks[i].reset();
         }
     }
 }
