@@ -15,7 +15,11 @@ export class MyAutomatedFish extends MyMovingFish {
     this.colors = [Math.random(), Math.random(), Math.random()];
     this.initial = this.orientationYY;
     this.pyramid.colors = [Math.random(), Math.random(), Math.random()];
-    this.pyramid.shader.setUniformsValues({r : this.colors[0], g : this.colors[1], b : this.colors[2] });
+    this.pyramid.shader.setUniformsValues({
+      r: this.colors[0],
+      g: this.colors[1],
+      b: this.colors[2],
+    });
     this.initPosition();
     this.initMaterials();
   }
@@ -24,15 +28,30 @@ export class MyAutomatedFish extends MyMovingFish {
     this.position = [this.center[0] + 5, this.center[1], this.center[2]];
   }
 
-  initMaterials(){
-      this.pyramid.finAppearance = new CGFappearance(this.scene);
-      this.pyramid.finAppearance.setAmbient(this.colors[0], this.colors[1], this.colors[2], 1.0);
-      this.pyramid.finAppearance.setDiffuse(this.colors[0], this.colors[1], this.colors[2], 1.0);
-      this.pyramid.finAppearance.setSpecular(this.colors[0], this.colors[1], this.colors[2], 1.0);
-      this.pyramid.finAppearance.setEmission(0, 0, 0, 1);
-      this.pyramid.finAppearance.setShininess(120);
-    } 
-      
+  initMaterials() {
+    this.pyramid.finAppearance = new CGFappearance(this.scene);
+    this.pyramid.finAppearance.setAmbient(
+      this.colors[0],
+      this.colors[1],
+      this.colors[2],
+      1.0
+    );
+    this.pyramid.finAppearance.setDiffuse(
+      this.colors[0],
+      this.colors[1],
+      this.colors[2],
+      1.0
+    );
+    this.pyramid.finAppearance.setSpecular(
+      this.colors[0],
+      this.colors[1],
+      this.colors[2],
+      1.0
+    );
+    this.pyramid.finAppearance.setEmission(0, 0, 0, 1);
+    this.pyramid.finAppearance.setShininess(120);
+  }
+
   update() {
     if (this.initial <= 0) {
       this.pyramid.turningRight = true;
@@ -42,5 +61,4 @@ export class MyAutomatedFish extends MyMovingFish {
     super.update();
     this.orientationYY += this.initial % 7;
   }
-
 }
