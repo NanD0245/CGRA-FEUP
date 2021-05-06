@@ -59,6 +59,7 @@ export class MyScene extends CGFscene {
     this.rock = new MyRock(this,16,8);
     this.sphere = new MySphere(this,16,8);
     this.automated = new MyAutomatedFish(this);
+    this.automated2 = new MyAutomatedFish(this);
 
     this.defaultAppearance = new CGFappearance(this);
     this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -129,6 +130,7 @@ export class MyScene extends CGFscene {
     this.checkKeys();
     this.movingFish.update();
     this.automated.update();
+    this.automated2.update();
     this.surface.update(t);
   }
 
@@ -232,6 +234,7 @@ export class MyScene extends CGFscene {
     this.algae.display();
 
     this.automated.display();
+    this.automated2.display();
     //this.sphere.display();
 
     //this.translate(3,0,0);
