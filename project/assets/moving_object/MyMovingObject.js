@@ -1,11 +1,13 @@
 import { CGFappearance, CGFobject } from '../../../lib/CGF.js';
 import { MyPyramid } from "../shapes/MyPyramid.js";
 import { MyFish } from "./MyFish.js";
+import { MyRock } from "../scene_objects/MyRock.js"
 
 
 export class MyMovingObject extends CGFobject {
     constructor(scene) {
 		super(scene);
+        this.scene = scene;
         this.pyramid = new MyPyramid(scene,4,1);
         this.initBuffers();
     }
@@ -15,7 +17,12 @@ export class MyMovingObject extends CGFobject {
         this.velocity = 0.0;
         this.orientationXX = Math.PI / 2;
         this.orientationYY = 0;
+        this.rock = new MyRock(this.scene,0,0);
+        this.rock.setCenter(1,1,1)
+        this.haveRock = false;
     }
+
+    getPosition() { return this.position; }
 
     display() {
         this.scene.pushMatrix();
@@ -27,6 +34,16 @@ export class MyMovingObject extends CGFobject {
         //this.scene.rotate(this.orientationXX, 1, 0, 0);
         this.pyramid.display();
         this.scene.popMatrix();
+
+        if (this.haveRock) {
+            this.scene.pushMatrix();
+
+            this.rock.setCenter(this.position[0],this.position[1] - 1, this.position[2])
+
+            //this.rock.setCenter(this.position[0],this.position[1] - 1, this.position[2]);
+
+            this.scene.popMatrix();
+        }
     }
 
     update() {  
@@ -47,6 +64,7 @@ export class MyMovingObject extends CGFobject {
         this.velocity = 0;
         this.orientationYY = 0;
         this.position = [0, 5, 0];
+        this.haveRock = 0;
     }
 
     ascend() {

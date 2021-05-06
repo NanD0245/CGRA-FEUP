@@ -56,7 +56,7 @@ export class MyScene extends CGFscene {
     this.rockSet = new MyRockSet(this);
     this.algae = new MyAlgaeSet(this);
     this.nest = new MyNest(this);
-    this.rock = new MyRock(this,16,8);
+    this.rock = this.movingFish.rock;
     this.sphere = new MySphere(this,16,8);
     this.automated = new MyAutomatedFish(this);
     this.automated2 = new MyAutomatedFish(this);
@@ -172,6 +172,7 @@ export class MyScene extends CGFscene {
       keysPressed = true;
       this.movingFish.pyramid.tail_speed = 1;
       this.movingFish.reset();
+      this.rockSet.reset();
     }
 
     if (this.gui.isKeyPressed("KeyP")) {
@@ -189,8 +190,12 @@ export class MyScene extends CGFscene {
     if(this.gui.isKeyPressed("KeyC")) {
       text += " C ";
       keysPressed = true;
-      if (this.movingFish.position[1] >= 0.4 && this.movingFish.position[1] <= 0.6)
-        console.log(this.movingFish.position);
+      var position = this.movingFish.getPosition();
+      if ((this.rock = this.rockSet.getRock(position)) != null) {
+        console.log(this.rock.getCenter());
+        this.movingFish.rock = this.rock;
+        this.movingFish.haveRock = true;
+      }
     }
 
     if (keysPressed) console.log(text);

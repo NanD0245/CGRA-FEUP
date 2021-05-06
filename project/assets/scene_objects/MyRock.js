@@ -7,6 +7,8 @@ export class MyRock extends CGFobject {
 		this.rock = new MyRockShape(scene,slices,stacks);
 	}
 
+	setInitCenter(x,y,z) {this.rock.setInitCenter(x,y,z); }
+
 	setCenter(x,y,z) { this.rock.setCenter(x,y,z); }
 
 	getCenter() { return this.rock.getCenter(); }

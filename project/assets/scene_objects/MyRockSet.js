@@ -40,7 +40,7 @@ export class MyRockSet extends CGFobject {
                 z = Math.floor(Math.random() * 99) - 49;
             } while(z < -2 && z > -14); //nest
 
-            rock.setCenter(x,0,z);
+            rock.setInitCenter(x,0,z);
 
             var orientation = Math.PI * Math.floor(Math.random() * 360) / 180;
 
@@ -67,5 +67,14 @@ export class MyRockSet extends CGFobject {
         for (let i = 0; i < 20; i++) {
             this.rocks[i].reset();
         }
+    }
+
+    getRock(position) {
+        for (let i = 0; i < 20; i++) {
+            var pos = this.rocks[i].getCenter();
+            if (Math.hypot(position[0] - pos[0],position[1]-pos[1], position[2]-pos[2]) < 1.5)
+                return this.rocks[i];
+        }
+        return null;
     }
 }
