@@ -6,4 +6,5 @@ export class MyMovingFish extends MyMovingObject {
         super(scene);
         this.pyramid = new MyFish(this.scene);
     }
+
 }
