@@ -6,4 +6,8 @@ export class MyMovingFish extends MyMovingObject {
     super(scene);
     this.pyramid = new MyFish(this.scene);
   }
+
+  lowerBound() {
+    return this.position[1] <= 1.0 ? true : false;
+  }
 }

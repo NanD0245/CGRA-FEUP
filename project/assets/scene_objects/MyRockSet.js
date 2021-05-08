@@ -5,7 +5,6 @@ export class MyRockSet extends CGFobject {
     constructor(scene) {
         super(scene);
         this.scene = scene;
-        //this.rock = new MyRock(scene,16,8); 
         this.rocks = [];
         this.initMaterials();
         this.initRocks();
@@ -29,7 +28,7 @@ export class MyRockSet extends CGFobject {
     }
 
     initRocks() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             var rock = new MyRock(this.scene, 16, 8);
             var x; var z;
             do {
@@ -44,13 +43,18 @@ export class MyRockSet extends CGFobject {
 
             var orientation = Math.PI * Math.floor(Math.random() * 360) / 180;
 
-            rock.setOrientation(orientation);
+            rock.setInitOrientation(orientation);
 
-            var s_x = (Math.floor(Math.random() * 10) + 11) / 20;
-            var s_y = (Math.floor(Math.random() * 10) + 11) / 20;
-            var s_z = (Math.floor(Math.random() * 10) + 11) / 20;
+            var s_x = (Math.floor(Math.random() * 10) + 11) / 40;
+            var s_y = (Math.floor(Math.random() * 10) + 11) / 40;
+            var s_z = (Math.floor(Math.random() * 10) + 11) / 40;
 
             rock.setScalement(s_x,s_y,s_z);
+
+            var n_x = (Math.floor(Math.random() * 5)) - 7;
+            var n_z = (Math.floor(Math.random() * 5)) - 8;
+
+            rock.setNestPosition(n_x,0,n_z)
 
             this.rocks.push(rock);
         }
@@ -58,19 +62,20 @@ export class MyRockSet extends CGFobject {
 
 
     display() {
-        for (let i = 0; i < 20; i++) {
+        this.rockAppearance.apply();
+        for (let i = 0; i < 50; i++) {
             this.rocks[i].display();
         }
     }
 
     reset() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             this.rocks[i].reset();
         }
     }
 
     getRock(position) {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             var pos = this.rocks[i].getCenter();
             if (Math.hypot(position[0] - pos[0],position[1]-pos[1], position[2]-pos[2]) < 1.5)
                 return this.rocks[i];

@@ -15,11 +15,19 @@ export class MyRock extends CGFobject {
 
 	setOrientation(x) { this.rock.setOrientation(x); }
 
+	setInitOrientation(x) { this.rock.setInitOrientation(x); }
+
+	getInitOrientation() { return this.rock.getInitOrientatin(); }
+
 	getOrientation() { return this.rock.getOrientation(); }
 
 	setScalement(x,y,z) { this.rock.setScalement(x,y,z); }
 
 	getScalement() { return this.rock.getScalement(); }
+
+	setNestPosition(x,y,z) { this.rock.setNestPosition(x,y,z); }
+
+  	getNestPosition() { return this.rock.getNestPosition(); }
 
 	display() {
 
@@ -39,5 +47,10 @@ export class MyRock extends CGFobject {
 
 	reset() {
 		this.rock.reset();
+	}
+
+	drop() { 
+		var nestPos = this.rock.getNestPosition();
+		this.setCenter(nestPos[0], nestPos[1], nestPos[2]); 
 	}
 }

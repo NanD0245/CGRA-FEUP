@@ -28,15 +28,21 @@ export class MyNest extends CGFobject {
         this.scene.translate(this.center[0],this.center[1],this.center[2]);
 
         this.rockAppearance.apply();
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 12; i++) {
             this.scene.pushMatrix();
             this.scene.rotate(angle, 0,1,0);
-            this.scene.translate(0,0,this.radius);
+            this.scene.translate(0,0,this.radius + 1);
             this.rock.display();
             this.scene.popMatrix();
-            angle += Math.PI/5;
+            angle += Math.PI/6;
         }
 
         this.scene.popMatrix();
+    }
+
+    check_drop(position) {
+        if (Math.hypot(position[0] - this.center[0],position[1]-this.center[1], position[2]-this.center[2]) < this.radius)
+            return true;
+        return false;
     }
 }

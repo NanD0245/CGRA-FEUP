@@ -191,12 +191,22 @@ export class MyScene extends CGFscene {
       text += " C ";
       keysPressed = true;
       var position = this.movingFish.getPosition();
-      if ((this.rock = this.rockSet.getRock(position)) != null) {
-        console.log(this.rock.getCenter());
-        this.movingFish.rock = this.rock;
-        this.movingFish.haveRock = true;
+      if (!this.movingFish.haveRock) { //lift rock
+        if ((this.rock = this.rockSet.getRock(position)) != null) {
+          console.log(this.rock.getCenter());
+          this.movingFish.rock = this.rock;
+          this.movingFish.haveRock = true;
+        }
+      }
+      else { //drop rock
+        if (this.nest.check_drop(position) && this.movingFish.lowerBound()) {
+          this.movingFish.haveRock = false;
+          this.movingFish.rock.drop();
+        }
       }
     }
+
+    if(this.gui.isKeyPressed("Key"))
 
     if (keysPressed) console.log(text);
     if (this.movingFish.pyramid.turningLeft) console.log("Turning left");
