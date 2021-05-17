@@ -10,14 +10,14 @@ export class MyAlgaeSet extends CGFobject {
     }
 
     initGroups() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             var group = new MyAlgaeGroup(this.scene);
             this.algaeGroups.push(group);
         }
     }
 
     display() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 50; i++) {
             var group = this.algaeGroups[i];
 
             this.scene.pushMatrix();

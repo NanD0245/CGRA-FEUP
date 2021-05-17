@@ -15,7 +15,9 @@ export class MyRockShape extends CGFobject {
     this.init_center = [0,0,0];
     this.center = [0,0,0];
     this.orientation = 0;
+    this.initOrientation = 0;
     this.scalement = [1,1,1];
+    this.nestPosition = [0,0,0];
   }
 
   setInitCenter(x,y,z) {this.init_center = [x,y,z]; this.center = [x,y,z]; }
@@ -28,11 +30,20 @@ export class MyRockShape extends CGFobject {
 
   setOrientation(x) { this.orientation = x;}
 
+  setInitOrientation(x) { this.orientation = x; this.initOrientation = x; }
+
   getOrientation() { return this.orientation; }
+
+  getInitOrientatin() {return this.initOrientation; }
 
   setScalement(x,y,z) { this.scalement = [x,y,z]; }
 
   getScalement() { return this.scalement; }
+
+  setNestPosition(x,y,z) { this.nestPosition = [x,y,z]; }
+
+  getNestPosition() { return this.nestPosition; }
+
   /**
    * @method initBuffers
    * Initializes the sphere buffers

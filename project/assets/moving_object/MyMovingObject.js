@@ -31,16 +31,15 @@ export class MyMovingObject extends CGFobject {
         this.scene.rotate(this.orientationYY,0,1,0);
         this.scene.translate(-this.position[0], -this.position[1], -this.position[2]);
         this.scene.translate(this.position[0], this.position[1], this.position[2]);   
-        //this.scene.rotate(this.orientationXX, 1, 0, 0);
         this.pyramid.display();
         this.scene.popMatrix();
 
         if (this.haveRock) {
             this.scene.pushMatrix();
 
-            this.rock.setCenter(this.position[0],this.position[1] - 1, this.position[2])
+            this.rock.setCenter(this.position[0] + Math.sin(this.orientationYY) ,this.position[1], this.position[2] + Math.cos(this.orientationYY));
 
-            //this.rock.setCenter(this.position[0],this.position[1] - 1, this.position[2]);
+            this.rock.setOrientation(this.rock.getInitOrientation() + this.orientationYY);
 
             this.scene.popMatrix();
         }
@@ -76,4 +75,5 @@ export class MyMovingObject extends CGFobject {
         if (this.position[1] >= 1 && this.position[1] <= 5.1) 
             this.position[1] -= 0.1;
     }
+
 }
