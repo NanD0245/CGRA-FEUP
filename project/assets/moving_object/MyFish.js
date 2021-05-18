@@ -42,9 +42,9 @@ export class MyFish extends CGFobject {
 
   initMaterials() {
     this.bodyAppearance = new CGFappearance(this.scene);
-    this.bodyAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
-    this.bodyAppearance.setDiffuse(0.2, 0.4, 0.8, 1.0);
-    this.bodyAppearance.setSpecular(0.2, 0.4, 0.8, 1.0);
+    this.bodyAppearance.setAmbient(1.0, 1.0, 1.0, 1.0);
+    this.bodyAppearance.setDiffuse(1.0, 1.0, 1.0, 1.0);
+    this.bodyAppearance.setSpecular(1.0, 1.0, 1.0, 1.0);
     this.bodyAppearance.setEmission(0, 0, 0, 1);
     this.bodyAppearance.setShininess(120);
     this.bodyAppearance.setTexture(this.texture);

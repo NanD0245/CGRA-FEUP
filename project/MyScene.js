@@ -228,8 +228,6 @@ export class MyScene extends CGFscene {
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
-    this.movingFish.display();
-
     this.sea_floor.display();
 
     this.defaultAppearance.apply();
@@ -248,7 +246,10 @@ export class MyScene extends CGFscene {
 
     this.algae.display();
 
+    this.movingFish.display();
+
     this.automated.display();
+
     this.automated2.display();
     //this.sphere.display();
 
