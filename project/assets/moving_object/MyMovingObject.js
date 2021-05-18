@@ -1,6 +1,5 @@
 import { CGFappearance, CGFobject } from "../../../lib/CGF.js";
 import { MyPyramid } from "../shapes/MyPyramid.js";
-import { MyFish } from "./MyFish.js";
 import { MyRock } from "../scene_objects/MyRock.js";
 
 export class MyMovingObject extends CGFobject {
@@ -23,6 +22,10 @@ export class MyMovingObject extends CGFobject {
 
   getPosition() {
     return this.position;
+  }
+
+  getOrientation() {
+    return this.orientationYY;
   }
 
   display() {
