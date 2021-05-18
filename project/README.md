@@ -3,6 +3,7 @@
 ## Group T2xG5y
 
 Fernando Rego - up201905951
+
 Tiago Rodrigues - up201907021
 
 ## Project Notes
@@ -21,4 +22,4 @@ but still giving it enough space to not spawn always in the same places.
 
 ### 2 - Sea Floor
 
-![Screenshot 2]()
+![Screenshot 2](screenshots/proj-t2g5-2.png)
