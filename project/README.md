@@ -45,3 +45,7 @@ but still giving it enough space to not spawn always in the same places.
 ### 7 - Fish catching Rocks
 
 ![Screenshot 7](screenshots/proj-t2g5-7.png)
+
+### 8 - Gouraud Shading, Automated fish and Algae sets
+
+![Screenshot 8](screenshots/proj-t2g5-8.png)
