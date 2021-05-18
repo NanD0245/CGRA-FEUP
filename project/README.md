@@ -27,3 +27,7 @@ but still giving it enough space to not spawn always in the same places.
 ### 3 - Water Surface
 
 ![Screenshot 3](screenshots/proj-t2g5-3.png)
+
+### 4 - Rock and Rock sets
+
+![Screenshot 4.1](screenshots/proj-t2g5-4.1.png)
