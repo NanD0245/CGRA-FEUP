@@ -33,3 +33,15 @@ but still giving it enough space to not spawn always in the same places.
 ![Screenshot 4.1](screenshots/proj-t2g5-4.1.png)
 
 ![Screenshot 4.2](screenshots/proj-t2g5-4.2.png)
+
+### 5 - Pillar Set
+
+![Screenshot 5](screenshots/proj-t2g5-5.png)
+
+### 6 - Updated Sea Floor
+
+![Screenshot 6](screenshots/proj-t2g5-6.png)
+
+### 7 - Fish catching Rocks
+
+![Screenshot 7](screenshots/proj-t2g5-7.png)
