@@ -35,7 +35,7 @@ export class MyFish extends CGFobject {
       this.scene,
       "images/fish_textures/fish_skin2.jpg"
     );
-    this.shader.setUniformsValues({r : 1, g : 0.5, b: 0}) 
+    this.shader.setUniformsValues({ r: 1, g: 0.5, b: 0 });
 
     this.initMaterials();
   }
@@ -156,14 +156,14 @@ export class MyFish extends CGFobject {
 
   animation() {
     if (this.tail_orientation && this.tail_offset < Math.PI / 9)
-      this.tail_offset += Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
+      this.tail_offset += (Math.PI / 25) * (0.5 + Math.abs(this.tail_speed));
     else if (this.tail_orientation && this.tail_offset >= Math.PI / 9) {
-      this.tail_offset -= Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
+      this.tail_offset -= (Math.PI / 25) * (0.5 + Math.abs(this.tail_speed));
       this.tail_orientation = false;
     } else if (!this.tail_orientation && this.tail_offset > -Math.PI / 9)
-      this.tail_offset -= Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
+      this.tail_offset -= (Math.PI / 25) * (0.5 + Math.abs(this.tail_speed));
     else if (!this.tail_orientation && this.tail_offset <= -Math.PI / 9) {
-      this.tail_offset += Math.PI / 25 * (0.5 + Math.abs(this.tail_speed));
+      this.tail_offset += (Math.PI / 25) * (0.5 + Math.abs(this.tail_speed));
       this.tail_orientation = true;
     }
     if (!this.turningLeft) {
