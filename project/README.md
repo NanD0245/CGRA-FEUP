@@ -1,6 +1,6 @@
 # CGRA 2020/2021
 
-## Group T2xG5y
+## Group T2G5
 
 Fernando Rego - up201905951
 
