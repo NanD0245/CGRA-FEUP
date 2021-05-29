@@ -11,7 +11,6 @@ uniform mat4 uPMatrix;
 uniform mat4 uNMatrix;
 
 varying vec2 vTextureCoord;
-//varying vec2 vTextureCoord2;
 
 uniform sampler2D distortionmap;
 uniform float subtract;
