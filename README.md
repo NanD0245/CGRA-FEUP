@@ -1,6 +1,6 @@
 # CGRA 2020/2021
 
-## Group T0xG0y
+## Group T02G05
 | Name             | Number    | E-Mail              |
 | ---------------- | --------- | ------------------  |
 | Fernando Rego    | 201905951 | up201905951@fe.up.pt|
